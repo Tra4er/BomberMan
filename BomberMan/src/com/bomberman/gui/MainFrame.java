@@ -14,6 +14,8 @@ public class MainFrame extends JFrame{
 	public static final int STANDART_SCREEN_WIDTH = 500;
 	public static final int STANDART_SCREEN_HEIGHT = 500;
 	
+	private MenuPanel menuPanel = new MenuPanel();
+	
 	public MainFrame(String title){
 		
 		super(title);
@@ -30,7 +32,11 @@ public class MainFrame extends JFrame{
 		setSize(STANDART_SCREEN_WIDTH, STANDART_SCREEN_HEIGHT);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		add(new MenuPanel());
+		add(menuPanel);
+		if(menuPanel.getState() == 1){
+			remove(menuPanel);
+			System.out.println("MAINFRAME");
+		}
 		setVisible(true);
 	}
 	
