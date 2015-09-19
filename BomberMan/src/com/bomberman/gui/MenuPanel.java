@@ -1,80 +1,43 @@
 package com.bomberman.gui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class MenuPanel extends JPanel {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 6822234907413574188L;
 	
-	private int state = 0;
+	private ScoreboardPanel scoreboardPanel;
+	public JLabel playerName = new JLabel("Iilai");
+	public JLabel playerScore = new JLabel("2000");
+	public JLabel playerScore1 = new JLabel("2000");
+	public JLabel playerScore2 = new JLabel("2000");
+	public JLabel playerScore3 = new JLabel("2000");
 	
 	private String creator = "by Tra4er";
-	
-	private JButton newGameButton;
-	private JButton settingsButton;
-	private JButton exitGameButton;
-	
-	private Image img = new ImageIcon("res/Bomberman.gif").getImage();
-	
 
 	public MenuPanel() {
-		
-		newGameButton = new JButton("New Game");
-		newGameButton.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				MenuPanel.this.removeAll();
-				MenuPanel.this.img = null;
-				MenuPanel.this.creator = "";
-				repaint();
-			}
-		});
-		add(newGameButton);
-		
-		settingsButton = new JButton("Settings");
-		settingsButton.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				state = 2;
-				
-			}
-		});
-		add(settingsButton);
-		
-		exitGameButton = new JButton("Exit Game");
-		exitGameButton.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
-			}
-		});
-		add(exitGameButton);
-		
+		setLayout(new BorderLayout());
+		scoreboardPanel = new ScoreboardPanel(this);
+		add(scoreboardPanel, BorderLayout.NORTH);
 	}
 
-	public void paint(Graphics g) {
+	@Override
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g = (Graphics2D) g;
+		
 		g.setColor(new Color(212, 235, 210));
 		g.fillRect(0, 0, MainFrame.STANDART_SCREEN_WIDTH, MainFrame.STANDART_SCREEN_HEIGHT);
-		g = (Graphics2D) g;
-		g.drawImage(img, 0, 0, null);
 		g.setColor(new Color(0, 0, 0));
 		g.drawString(creator, 400, 450);
-	}
-
-	public int getState() {
-		return state;
 	}
 
 }
