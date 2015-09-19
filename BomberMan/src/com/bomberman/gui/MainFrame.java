@@ -6,10 +6,15 @@ import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 
 public class MainFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	
+	private JMenuBar menuBar;
+	private JMenu menu;
 
 	public static final int STANDART_SCREEN_WIDTH = 500;
 	public static final int STANDART_SCREEN_HEIGHT = 500;
@@ -18,6 +23,13 @@ public class MainFrame extends JFrame {
 
 		super(title);
 
+		initMainFrame();
+		initBarMenu();
+		
+		add(new MainPanel());
+	}
+	
+	private void initMainFrame(){
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension dem = kit.getScreenSize();
 
@@ -28,8 +40,14 @@ public class MainFrame extends JFrame {
 		setSize(STANDART_SCREEN_WIDTH, STANDART_SCREEN_HEIGHT);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		add(new MenuPanel());
-		System.out.println("Frame");
+	}
+	
+	private void initBarMenu(){
+		// TODO MENUBAR
+		menuBar = new JMenuBar();
+		menu = new JMenu("ONE");
+		menuBar.add(menu);
+		setJMenuBar(menuBar);
 	}
 
 }

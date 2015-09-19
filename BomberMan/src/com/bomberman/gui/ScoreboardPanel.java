@@ -1,18 +1,27 @@
 package com.bomberman.gui;
 
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 public class ScoreboardPanel extends JPanel {
 
 	private static final long serialVersionUID = -5566101902542874021L;
 	
-	public ScoreboardPanel(MenuPanel menuPanel){
+	private static final Border PADDING_BORDER = BorderFactory.createEmptyBorder(5, 5, 5, 5);
+
+    private static final Border LINE_BORDER = BorderFactory.createLineBorder(Color.DARK_GRAY);
+	
+	public ScoreboardPanel(MainPanel menuPanel){
 	
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
+		
+		configLabels(menuPanel);
 		
 		gc.weightx = 1;
 		gc.weighty = 1;
@@ -41,6 +50,10 @@ public class ScoreboardPanel extends JPanel {
 		gc.gridx = 4;
 		gc.gridy = 0;
 		add(menuPanel.playerScore3, gc);
+	}
+	
+	private void configLabels(MainPanel menuPanel){
+		menuPanel.playerName.setBorder(BorderFactory.createCompoundBorder(LINE_BORDER, PADDING_BORDER));
 	}
 	
 }
