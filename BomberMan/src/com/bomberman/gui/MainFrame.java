@@ -9,15 +9,18 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 
+import com.bomberman.Game;
+
 public class MainFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
 	private JMenuBar menuBar;
 	private JMenu menu;
-
-	public static final int STANDART_SCREEN_WIDTH = 500;
-	public static final int STANDART_SCREEN_HEIGHT = 500;
+	
+	public static final int DEFAULT_BLOCK = 40;
+	public static final int DEFAULT_SCREEN_WIDTH = 700;//647
+	public static final int DEFAULT_SCREEN_HEIGHT = 700;//700
 
 	public MainFrame(String title) {
 
@@ -36,8 +39,8 @@ public class MainFrame extends JFrame {
 		Image icon = new ImageIcon("res/bombIcon.png").getImage();
 		setIconImage(icon);
 		
-		setLocation(dem.width / 5, dem.height / 6);
-		setSize(STANDART_SCREEN_WIDTH, STANDART_SCREEN_HEIGHT);
+		setLocation(dem.width / 5, 10);
+		setSize(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
@@ -48,6 +51,10 @@ public class MainFrame extends JFrame {
 		menu = new JMenu("ONE");
 		menuBar.add(menu);
 		setJMenuBar(menuBar);
+	}
+	
+	public void addGame(Game game){
+//		TODO 
 	}
 
 }
