@@ -43,25 +43,44 @@ public class MainPanel extends JPanel {
 		g.setColor(new Color(0, 0, 0));
 		g.drawString(creator, 400, 400);
 
-		for (int i = 0; i < 17; i++) {
-			g.setColor(new Color(200, 20, 100));
-			g.fillRect(i * MainFrame.DEFAULT_BLOCK, 0, MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK);
-			g.fillRect(i * MainFrame.DEFAULT_BLOCK, 15 * MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK);
-			g.setColor(new Color(0, 0, 0));
-			g.drawLine(i * MainFrame.DEFAULT_BLOCK, 0, i * MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_SCREEN_HEIGHT);
-//			if(i % 2 == 0){
-//				g.fillRect(x, y, width, height);
-//			}
+		for (int i = 0; i < MainFrame.DEFAULT_BLOCK_NUMBER; i++) {
+			for(int j = 0; j < MainFrame.DEFAULT_BLOCK_NUMBER; j++){
+				if(/*i == 0 || i == MainFrame.DEFAULT_BLOCK_NUMBER - 1 || 
+				   j == 0 || j == MainFrame.DEFAULT_BLOCK_NUMBER - 1 ||*/ 
+				   (i % 2 == 1 && j % 2 == 1)) {
+					g.setColor(new Color(255, 255, 0));
+					g.fillRect(i * MainFrame.DEFAULT_BLOCK, j * (MainFrame.DEFAULT_BLOCK - 2), MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK);
+				}
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 		}
-		
-		for (int i = 0; i < 17; i++) {
-			g.setColor(new Color(200, 20, 100));
-			g.fillRect(0, i * MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK);
-			g.fillRect(15 * MainFrame.DEFAULT_BLOCK, i * MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK);
-			g.setColor(new Color(0, 0, 0));
-			if(i == 16) g.setColor(new Color(255, 0, 0));
-			g.drawLine(0, i * MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_SCREEN_WIDTH, i * MainFrame.DEFAULT_BLOCK );
-		}
+//			g.setColor(new Color(200, 20, 100));
+//			g.fillRect(i * MainFrame.DEFAULT_BLOCK, 0, MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK);
+//			g.fillRect(i * MainFrame.DEFAULT_BLOCK, 15 * MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK);
+//			g.setColor(new Color(0, 0, 0));
+//			g.drawLine(i * MainFrame.DEFAULT_BLOCK, 0, i * MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_SCREEN_HEIGHT);
+////			if(i % 2 == 0){
+////				g.fillRect(x, y, width, height);
+////			}
+//		}
+//		
+//		for (int i = 0; i < 17; i++) {
+//			g.setColor(new Color(200, 20, 100));
+//			g.fillRect(0, i * MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK);
+//			g.fillRect(15 * MainFrame.DEFAULT_BLOCK, i * MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK);
+//			g.setColor(new Color(0, 0, 0));
+//			if(i == 16) g.setColor(new Color(255, 0, 0));
+//			g.drawLine(0, i * MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_SCREEN_WIDTH, i * MainFrame.DEFAULT_BLOCK );
+//		}
 		
 	}
 

@@ -18,7 +18,9 @@ public class MainFrame extends JFrame {
 	private JMenuBar menuBar;
 	private JMenu menu;
 	
+	
 	public static final int DEFAULT_BLOCK = 40;
+	public static final int DEFAULT_BLOCK_NUMBER = 16;
 	public static final int DEFAULT_SCREEN_WIDTH = 700;//647
 	public static final int DEFAULT_SCREEN_HEIGHT = 700;//700
 
