@@ -13,23 +13,29 @@ public class ScoreboardPanel extends JPanel {
 
 	private static final long serialVersionUID = -5566101902542874021L;
 	
-	private static final Border PADDING_BORDER = BorderFactory.createEmptyBorder(5, 5, 5, 5);
+	private final Border LABEL_BORDER = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 
-    private static final Border LINE_BORDER = BorderFactory.createLineBorder(Color.DARK_GRAY);
+    private final Border MAIN_BORDER = BorderFactory.createMatteBorder(2, 2, 3, 2, Color.GREEN);
+    
+    private JLabel playerOneName;
+    private JLabel playerOneScore;
+    private JLabel playerScore1;
+    private JLabel playerTwoScore;
+    private JLabel playerTwoName;
 	
     
-	public ScoreboardPanel(MainPanel menuPanel){
+	public ScoreboardPanel(MainPanel mainPanel){
 		
-		JLabel playerOneName = new JLabel(menuPanel.playerOne.getName());
-		JLabel playerOneScore = new JLabel(menuPanel.playerOne.getScore());
-		JLabel playerScore1 = new JLabel("2000");
-		JLabel playerTwoScore = new JLabel(menuPanel.playerTwo.getScore());
-		JLabel playerTwoName = new JLabel(menuPanel.playerTwo.getName());
+		playerOneName = new JLabel(mainPanel.playerOne.getName());
+		playerOneScore = new JLabel(mainPanel.playerOne.getScore());
+		playerScore1 = new JLabel("2000");
+		playerTwoScore = new JLabel(mainPanel.playerTwo.getScore());
+		playerTwoName = new JLabel(mainPanel.playerTwo.getName());
 	
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
 		
-		configLabels(menuPanel);
+		configLabels();
 		
 		gc.weightx = 1;
 		gc.weighty = 1;
@@ -60,8 +66,13 @@ public class ScoreboardPanel extends JPanel {
 		add(playerTwoName, gc);
 	}
 	
-	private void configLabels(MainPanel menuPanel){
-//		menuPanel.playerName.setBorder(BorderFactory.createCompoundBorder(LINE_BORDER, PADDING_BORDER));
+	private void configLabels(){
+		playerOneName.setBorder(LABEL_BORDER);
+		playerOneScore.setBorder(LABEL_BORDER);
+		playerScore1.setBorder(LABEL_BORDER);
+		playerTwoScore.setBorder(LABEL_BORDER);
+		playerTwoName.setBorder(LABEL_BORDER);
+		setBorder(MAIN_BORDER);
 	}
 	
 }

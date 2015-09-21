@@ -20,9 +20,9 @@ public class MainFrame extends JFrame {
 	
 	
 	public static final int DEFAULT_BLOCK = 40;
-	public static final int DEFAULT_BLOCK_NUMBER = 16;
+	public static final int DEFAULT_BLOCK_NUMBER = 17;
 	public static final int DEFAULT_SCREEN_WIDTH = 700;//647
-	public static final int DEFAULT_SCREEN_HEIGHT = 700;//700
+	public static final int DEFAULT_SCREEN_HEIGHT = 740;//700
 
 	public MainFrame(String title) {
 
@@ -41,7 +41,7 @@ public class MainFrame extends JFrame {
 		Image icon = new ImageIcon("res/bombIcon.png").getImage();
 		setIconImage(icon);
 		
-		setLocation(dem.width / 5, 10);
+		setLocation(dem.width / 5, 0);
 		setSize(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
