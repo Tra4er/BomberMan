@@ -3,7 +3,6 @@ package com.bomberman;
 import javax.swing.SwingUtilities;
 
 import com.bomberman.gui.MainFrame;
-import com.bomberman.objects.Bomberman;
 
 public class Game {
 	
