@@ -5,29 +5,21 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-import com.bomberman.objects.Bomberman;
 
 public class MainPanel extends JPanel {
 
 	private static final long serialVersionUID = 6822234907413574188L;
 
 	private ScoreboardPanel scoreboardPanel;
-	private GamePanel gamePanel;
-
-	public Bomberman playerOne;
-	public Bomberman playerTwo;
+	private GamePanel gamePanel = new GamePanel();;
 
 	public MainPanel() {
 
 		setLayout(new BorderLayout());
 
-		setScoreboardPanel();
 		setGamePanel();
-	}
-
-	{
-		playerOne = new Bomberman("Iilai");
-		playerTwo = new Bomberman("Bomber");
+		setScoreboardPanel();
+		
 	}
 
 	@Override
@@ -37,12 +29,12 @@ public class MainPanel extends JPanel {
 	}
 	
 	private void setScoreboardPanel() {
-		scoreboardPanel = new ScoreboardPanel(this);
+		scoreboardPanel = new ScoreboardPanel(gamePanel);
 		add(scoreboardPanel, BorderLayout.NORTH);
 	}
 	
 	private void setGamePanel() {
-		gamePanel = new GamePanel();
+//		gamePanel = new GamePanel();
 		add(gamePanel, BorderLayout.CENTER);
 	}
 

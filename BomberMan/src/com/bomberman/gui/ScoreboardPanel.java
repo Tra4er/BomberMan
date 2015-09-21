@@ -24,13 +24,13 @@ public class ScoreboardPanel extends JPanel {
     private JLabel playerTwoName;
 	
     
-	public ScoreboardPanel(MainPanel mainPanel){
+	public ScoreboardPanel(GamePanel gamePanel){
 		
-		playerOneName = new JLabel(mainPanel.playerOne.getName());
-		playerOneScore = new JLabel(mainPanel.playerOne.getScore());
+		playerOneName = new JLabel(gamePanel.playerOne.getName());
+		playerOneScore = new JLabel(gamePanel.playerOne.getScore());
 		playerScore1 = new JLabel("2000");
-		playerTwoScore = new JLabel(mainPanel.playerTwo.getScore());
-		playerTwoName = new JLabel(mainPanel.playerTwo.getName());
+		playerTwoScore = new JLabel(gamePanel.playerTwo.getScore());
+		playerTwoName = new JLabel(gamePanel.playerTwo.getName());
 	
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
