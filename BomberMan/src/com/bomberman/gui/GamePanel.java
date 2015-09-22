@@ -19,13 +19,12 @@ public class GamePanel extends JPanel implements ActionListener {
 
 	public Bomberman playerOne;
 	public Bomberman playerTwo;
-	
 
 	public GamePanel() {
 		setFocusable(true);
 		addKeyListener(new KeyController());
 		initPlayers();
-//		setLayout(new BorderLayout());
+		// setLayout(new BorderLayout());
 	}
 
 	@Override
@@ -42,12 +41,21 @@ public class GamePanel extends JPanel implements ActionListener {
 			for (int j = 0; j < MainFrame.DEFAULT_BLOCK_NUMBER; j++) {
 				if (i == 0 || i == MainFrame.DEFAULT_BLOCK_NUMBER - 1 || j == 0
 						|| j == MainFrame.DEFAULT_BLOCK_NUMBER - 1 || (i % 2 == 0 && j % 2 == 0)) {
-					g.fillRect(i * MainFrame.DEFAULT_BLOCK, j * (MainFrame.DEFAULT_BLOCK - 2), MainFrame.DEFAULT_BLOCK,
+					g.fillRect(i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK , MainFrame.DEFAULT_BLOCK,
 							MainFrame.DEFAULT_BLOCK);
 				}
 
 			}
 		}
+		
+		g.setColor(new Color(0, 255, 0));
+		for (int c = 0; c < MainFrame.DEFAULT_SCREEN_HEIGHT; c += 10) {
+			g.drawLine(0, c, MainFrame.DEFAULT_SCREEN_WIDTH, c );
+		}
+		for (int c = 0; c < MainFrame.DEFAULT_SCREEN_HEIGHT; c += 10) {
+			g.drawLine(c, 0, c, MainFrame.DEFAULT_SCREEN_HEIGHT);
+		}
+
 
 		g.setColor(Color.RED);
 		g.fillRect(playerOne.getX() * MainFrame.DEFAULT_BLOCK, playerOne.getY() * MainFrame.DEFAULT_BLOCK, 40, 40);
@@ -57,17 +65,17 @@ public class GamePanel extends JPanel implements ActionListener {
 		playerOne = new Bomberman();
 		playerTwo = new Bomberman();
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		repaint();
 	}
-	
+
 	private class KeyController extends KeyAdapter {
 		@Override
 		public void keyPressed(KeyEvent e) {
 			int keyID = e.getKeyCode();
-			
+
 			switch (keyID) {
 			case KeyEvent.VK_UP:
 				playerOne.moveUp();
@@ -102,7 +110,7 @@ public class GamePanel extends JPanel implements ActionListener {
 				repaint();
 				break;
 			}
-			
+
 		}
 	}
 
