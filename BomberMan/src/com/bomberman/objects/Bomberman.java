@@ -45,25 +45,25 @@ public class Bomberman {
 	}
 	
 	public void moveUp() {
-		if(y > 1 && x % 2 == 1){
+		if(y > 1 && x % 2 == 1 && blocksArray[x][y - 1] < 1){
 			y--;
 		}
 	}
 	
 	public void moveRight() {
-		if(x < 15 && y % 2 == 1){
+		if(x < 15 && y % 2 == 1 && blocksArray[x + 1][y] < 1 ){
 			x++;
 		}
 	}
 	
 	public void moveDown() {
-		if(y < 15 && x % 2 == 1){
+		if(y < 15 && x % 2 == 1 && blocksArray[x][y + 1] < 1){
 			y++;
 		}
 	}
 	
 	public void moveLeft() {
-		if(x > 1 && y % 2 == 1) {
+		if(x > 1 && y % 2 == 1 && blocksArray[x - 1][y] < 1) {
 			x--;
 		}
 	}
