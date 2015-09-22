@@ -1,23 +1,18 @@
 package com.bomberman.objects;
 
-import java.awt.event.KeyEvent;
+import com.bomberman.gui.MainFrame;
 
 public class Bomberman {
 
 	private int x;
 	private int y;
 	
-	public boolean moveUp;
-	public boolean moveRight;
-	public boolean moveDown;
-	public boolean moveLeft;
-
 	private String name;
 	private String bestTime;
 
 	private int score = 0;
 	private int lifes = 1;
-	private int speed = 1; // Прибавляєм більший крок в пікселях
+	private int speed = 4;
 	private int firePower = 1;
 	private int bombs = 1;
 	
@@ -43,28 +38,31 @@ public class Bomberman {
 		this.setName(name);
 	}
 	
-	
-	
-	public void stop(KeyEvent e) {
-		int keyID = e.getKeyCode();
-		
-		switch (keyID) {
-		case KeyEvent.VK_UP:
-			moveUp = false;
-			break;
-		case KeyEvent.VK_RIGHT:
-			moveRight = false;
-			break;
-		case KeyEvent.VK_DOWN:
-			moveDown = false;
-			break;
-		case KeyEvent.VK_LEFT:
-			moveLeft = false;
-			break;
+	public void moveUp() {
+		if(y > 1 && x % 2 == 1){
+			y--;
 		}
 	}
 	
-
+	public void moveRight() {
+		if(x < 15 && y % 2 == 1){
+			x++;
+		}
+	}
+	
+	public void moveDown() {
+		if(y < 15 && x % 2 == 1){
+			y++;
+		}
+	}
+	
+	public void moveLeft() {
+		if(x > 1 && y % 2 == 1) {
+			x--;
+		}
+	}
+	
+	
 	public String getName() {
 		return name;
 	}
@@ -97,23 +95,13 @@ public class Bomberman {
 		this.y = y;
 	}
 
-	public void move(KeyEvent e) {
-		int keyID = e.getKeyCode();
-
-		switch (keyID) {
-		case KeyEvent.VK_UP:
-			moveUp = true;
-			break;
-		case KeyEvent.VK_RIGHT:
-			moveRight = true;
-			break;
-		case KeyEvent.VK_DOWN:
-			moveDown = true;
-			break;
-		case KeyEvent.VK_LEFT:
-			moveLeft = true;
-			break;
-		}
-		
+	public int getSpeed() {
+		return speed;
 	}
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+
+	
 }

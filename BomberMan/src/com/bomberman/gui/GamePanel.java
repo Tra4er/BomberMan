@@ -25,7 +25,7 @@ public class GamePanel extends JPanel implements ActionListener {
 		setFocusable(true);
 		addKeyListener(new KeyController());
 		initPlayers();
-		setLayout(new BorderLayout());
+//		setLayout(new BorderLayout());
 	}
 
 	@Override
@@ -66,12 +66,43 @@ public class GamePanel extends JPanel implements ActionListener {
 	private class KeyController extends KeyAdapter {
 		@Override
 		public void keyPressed(KeyEvent e) {
-			playerOne.move(e);
-		}
-
-		@Override
-		public void keyReleased(KeyEvent e) {
-			playerOne.stop(e);
+			int keyID = e.getKeyCode();
+			
+			switch (keyID) {
+			case KeyEvent.VK_UP:
+				playerOne.moveUp();
+				repaint();
+				break;
+			case KeyEvent.VK_W:
+				playerTwo.moveUp();
+				repaint();
+				break;
+			case KeyEvent.VK_RIGHT:
+				playerOne.moveRight();
+				repaint();
+				break;
+			case KeyEvent.VK_D:
+				playerTwo.moveRight();
+				repaint();
+				break;
+			case KeyEvent.VK_DOWN:
+				playerOne.moveDown();
+				repaint();
+				break;
+			case KeyEvent.VK_S:
+				playerTwo.moveDown();
+				repaint();
+				break;
+			case KeyEvent.VK_LEFT:
+				playerOne.moveLeft();
+				repaint();
+				break;
+			case KeyEvent.VK_A:
+				playerTwo.moveLeft();
+				repaint();
+				break;
+			}
+			
 		}
 	}
 

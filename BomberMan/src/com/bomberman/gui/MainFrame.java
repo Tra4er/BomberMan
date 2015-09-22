@@ -3,13 +3,14 @@ package com.bomberman.gui;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-
-import com.bomberman.Game;
+import javax.swing.JMenuItem;
 
 public class MainFrame extends JFrame {
 
@@ -17,12 +18,13 @@ public class MainFrame extends JFrame {
 	
 	private JMenuBar menuBar;
 	private JMenu menu;
+	private JMenuItem menuItem;
 	
 	
 	public static final int DEFAULT_BLOCK = 40;
 	public static final int DEFAULT_BLOCK_NUMBER = 17;
-	public static final int DEFAULT_SCREEN_WIDTH = 700;//647
-	public static final int DEFAULT_SCREEN_HEIGHT = 740;//700
+	public static final int DEFAULT_SCREEN_WIDTH = 685;//685
+	public static final int DEFAULT_SCREEN_HEIGHT = 732;//732
 
 	public MainFrame(String title) {
 
@@ -51,12 +53,18 @@ public class MainFrame extends JFrame {
 		// TODO MENUBAR
 		menuBar = new JMenuBar();
 		menu = new JMenu("ONE");
+		menuItem = new JMenuItem("Close");
+		menuItem.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+//				this.
+			}
+			
+		});
+		menu.add(menuItem);
 		menuBar.add(menu);
 		setJMenuBar(menuBar);
-	}
-	
-	public void addGame(Game game){
-//		TODO 
 	}
 
 }

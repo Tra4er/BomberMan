@@ -1,12 +1,14 @@
 package com.bomberman.gui;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 import javax.swing.border.Border;
 
 public class ScoreboardPanel extends JPanel {
@@ -14,8 +16,10 @@ public class ScoreboardPanel extends JPanel {
 	private static final long serialVersionUID = -5566101902542874021L;
 	
 	private final Border LABEL_BORDER = BorderFactory.createEmptyBorder(5, 5, 5, 5);
-
     private final Border MAIN_BORDER = BorderFactory.createMatteBorder(2, 2, 3, 2, Color.GREEN);
+    private final Font FONT = new Font("Jokerman", Font.PLAIN, 14);
+    
+//    private Timer timer; 
     
     private JLabel playerOneName;
     private JLabel playerOneScore;
@@ -25,6 +29,7 @@ public class ScoreboardPanel extends JPanel {
 	
     
 	public ScoreboardPanel(GamePanel gamePanel){
+		
 		
 		playerOneName = new JLabel(gamePanel.playerOne.getName());
 		playerOneScore = new JLabel(gamePanel.playerOne.getScore());
@@ -68,10 +73,19 @@ public class ScoreboardPanel extends JPanel {
 	
 	private void configLabels(){
 		playerOneName.setBorder(LABEL_BORDER);
+		playerOneName.setFont(FONT);
+		
 		playerOneScore.setBorder(LABEL_BORDER);
+		playerOneScore.setFont(FONT);
+		
 		playerScore1.setBorder(LABEL_BORDER);
+		
 		playerTwoScore.setBorder(LABEL_BORDER);
+		playerTwoScore.setFont(FONT);
+		
 		playerTwoName.setBorder(LABEL_BORDER);
+		playerTwoName.setFont(FONT);
+		
 		setBorder(MAIN_BORDER);
 	}
 	
