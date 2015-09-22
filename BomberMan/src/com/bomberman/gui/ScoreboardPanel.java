@@ -8,7 +8,6 @@ import java.awt.GridBagLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.Timer;
 import javax.swing.border.Border;
 
 public class ScoreboardPanel extends JPanel {
@@ -18,8 +17,6 @@ public class ScoreboardPanel extends JPanel {
 	private final Border LABEL_BORDER = BorderFactory.createEmptyBorder(5, 5, 5, 5);
     private final Border MAIN_BORDER = BorderFactory.createMatteBorder(2, 2, 3, 2, Color.GREEN);
     private final Font FONT = new Font("Jokerman", Font.PLAIN, 14);
-    
-//    private Timer timer; 
     
     private JLabel playerOneName;
     private JLabel playerOneScore;

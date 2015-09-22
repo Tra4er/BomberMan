@@ -1,11 +1,12 @@
 package com.bomberman.objects;
 
-import com.bomberman.gui.MainFrame;
 
 public class Bomberman {
 
 	private int x;
 	private int y;
+	
+	private static int[][] blocksArray;
 	
 	private String name;
 	private String bestTime;
@@ -21,21 +22,26 @@ public class Bomberman {
 	
 
 	public Bomberman() {
-		this(1, 1, "Player");
+		this(1, 1, "Player", blocksArray);
 	}
 
 	public Bomberman(int x, int y) {
-		this(x, y, "Player");
+		this(x, y, "Player", blocksArray);
 	}
 	
 	public Bomberman(String name){
-		this(1, 1, name);
+		this(1, 1, name, blocksArray);
+	}
+	
+	public Bomberman(int[][] blocksArray) {
+		this(1, 1, "Player", blocksArray);
 	}
 
-	public Bomberman(int x, int y, String name) {
+	public Bomberman(int x, int y, String name, int[][] blocksArray) {
 		this.setX(x);
 		this.setY(y);
 		this.setName(name);
+		this.blocksArray = blocksArray;
 	}
 	
 	public void moveUp() {
