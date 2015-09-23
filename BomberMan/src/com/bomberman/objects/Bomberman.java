@@ -13,13 +13,13 @@ public class Bomberman {
 	private String name;
 	private String bestTime;
 	
-	public ArrayList<Bomb> bombsList;
+	public ArrayList<Bomb> bombsList = new ArrayList<Bomb>();
 	
 	private int score = 0;
 	private int lifes = 1;
 	private int speed = 4;
 	private int firePower = 1;
-	private int bombs = 3;
+	public static int bombs = 2;
 	
 
 	public Bomberman() {
@@ -70,7 +70,7 @@ public class Bomberman {
 	}
 	
 	public void setBomb() {
-		bombsList.add(new Bomb(x, y, blocksArray));
+		new Bomb(x, y, blocksArray);
 	}
 	
 	

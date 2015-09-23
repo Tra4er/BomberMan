@@ -91,7 +91,6 @@ public class GamePanel extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		playerOne.bombsList.get(0).detonate();
 		repaint();
 	}
 	
@@ -119,8 +118,11 @@ public class GamePanel extends JPanel implements ActionListener {
 				repaint();
 				break;
 			case KeyEvent.VK_SPACE:
-				playerOne.setBomb();
-				repaint();
+				if(playerOne.bombs > 0){
+					playerOne.setBomb();
+					playerOne.bombs--;
+					repaint();
+				}
 				break;
 				
 				
@@ -143,7 +145,11 @@ public class GamePanel extends JPanel implements ActionListener {
 				break;
 				
 			case KeyEvent.VK_ENTER:
-				repaint();
+				if(playerTwo.bombs > 0){
+					playerTwo.setBomb();
+					playerTwo.bombs--;
+					repaint();
+				}
 				break;
 			}
 
