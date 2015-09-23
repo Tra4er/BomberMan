@@ -22,14 +22,13 @@ public class GamePanel extends JPanel implements ActionListener {
 	
 	private int[][] blocksArray = new int[MainFrame.DEFAULT_BLOCK_NUMBER][MainFrame.DEFAULT_BLOCK_NUMBER];
 	
-	private int bombsSet;
 	
 	public Bomberman playerOne;
 	public Bomberman playerTwo;
 	
-	private Stack<Point2D.Double> bombStack = new Stack<Point2D.Double>();
+	public static Stack<Point2D.Double> bombStack = new Stack<Point2D.Double>();
 	
-	private final int DETONATE_TIME = 5000;
+	private final int DETONATE_TIME = 100;
 	public Timer timer = new Timer(DETONATE_TIME, this);
 
 	public GamePanel() {
@@ -66,6 +65,7 @@ public class GamePanel extends JPanel implements ActionListener {
 		g.fillRect(playerOne.getX() * MainFrame.DEFAULT_BLOCK, playerOne.getY() * MainFrame.DEFAULT_BLOCK, 40, 40);
 		g.setColor(new Color(255, 255, 0));
 		g.fillRect(playerTwo.getX() * MainFrame.DEFAULT_BLOCK, playerTwo.getY() * MainFrame.DEFAULT_BLOCK, 40, 40);
+		repaint();
 	}
 
 	private void initPlayers() {
@@ -91,13 +91,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(bombsSet > 0 && timer.isRepeats()) {
-			System.out.println("Pasted \"if\" of isBombSet and TimerRepeats");
-			playerOne.detonate(bombStack);
-//			playerTwo.detonate(bombStack);
-			bombsSet--;
-			if(bombsSet == 0) timer.stop();
-		}
+		playerOne.bombsList.get(0).detonate();
 		repaint();
 	}
 	
@@ -125,9 +119,7 @@ public class GamePanel extends JPanel implements ActionListener {
 				repaint();
 				break;
 			case KeyEvent.VK_SPACE:
-				playerOne.setBomb(bombStack);
-				timer.start();
-				bombsSet++;
+				playerOne.setBomb();
 				repaint();
 				break;
 				
@@ -151,9 +143,6 @@ public class GamePanel extends JPanel implements ActionListener {
 				break;
 				
 			case KeyEvent.VK_ENTER:
-				playerTwo.setBomb(bombStack);
-				timer.start();
-				bombsSet++;
 				repaint();
 				break;
 			}

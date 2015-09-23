@@ -1,7 +1,6 @@
 package com.bomberman.objects;
 
-import java.awt.geom.Point2D;
-import java.util.Stack;
+import java.util.ArrayList;
 
 
 public class Bomberman {
@@ -9,16 +8,18 @@ public class Bomberman {
 	private int x;
 	private int y;
 	
-	private static int[][] blocksArray;
+	public static int[][] blocksArray;
 	
 	private String name;
 	private String bestTime;
+	
+	public ArrayList<Bomb> bombsList;
 	
 	private int score = 0;
 	private int lifes = 1;
 	private int speed = 4;
 	private int firePower = 1;
-	private int bombs = 1;
+	private int bombs = 3;
 	
 
 	public Bomberman() {
@@ -68,25 +69,8 @@ public class Bomberman {
 		}
 	}
 	
-	public void setBomb(Stack<Point2D.Double> bombStack) {
-		if(bombs > 0){
-			blocksArray[x][y] = 3;
-			bombs--;
-			bombStack.push(new Point2D.Double((double)x, (double)y));
-		}
-	}
-	
-	public void addBomb(){
-		bombs++;
-	}
-	
-	public void detonate(Stack<Point2D.Double> bombStack){
-		addBomb();
-		if(!bombStack.isEmpty()){
-			Point2D point = bombStack.pop();
-			blocksArray[(int)point.getX()][(int)point.getY()] = 0;
-		}
-		System.out.println("Detonated");
+	public void setBomb() {
+		bombsList.add(new Bomb(x, y, blocksArray));
 	}
 	
 	
