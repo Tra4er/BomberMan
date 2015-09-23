@@ -20,8 +20,13 @@ public class GamePanel extends JPanel implements ActionListener {
 	
 	private final int BLOCK_SPAWN = 50;
 	
-	private int[][] blocksArray = new int[MainFrame.DEFAULT_BLOCK_NUMBER][MainFrame.DEFAULT_BLOCK_NUMBER];
+	public static final int EMPTY_BLOCK = 0;
+	public static final int DESTROYED_BLOCK = 1;
+	public static final int STATIC_BLOCK = 2;
+	public static final int BOMB_BLOCK = 3;
+	public static final int BONUS_BLOCK = -1;
 	
+	private int[][] blocksArray = new int[MainFrame.DEFAULT_BLOCK_NUMBER][MainFrame.DEFAULT_BLOCK_NUMBER];
 	
 	public Bomberman playerOne;
 	public Bomberman playerTwo;
@@ -42,6 +47,7 @@ public class GamePanel extends JPanel implements ActionListener {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		if(playerOne.getLifes() < 1) System.out.println("DEAD");
 		g.setColor(new Color(212, 235, 210));
 		g.fillRect(0, 0, MainFrame.DEFAULT_SCREEN_WIDTH, MainFrame.DEFAULT_SCREEN_HEIGHT);
 
@@ -49,13 +55,14 @@ public class GamePanel extends JPanel implements ActionListener {
 		for (int i = 0; i < MainFrame.DEFAULT_BLOCK_NUMBER; i++) {
 			for (int j = 0; j < MainFrame.DEFAULT_BLOCK_NUMBER; j++) {
 				switch (blocksArray[i][j]) {
-				case 0: g.setColor(new Color(0, 50, 50));
+				case EMPTY_BLOCK: g.setColor(new Color(0, 50, 50));
 					break;
-				case 1: g.setColor(new Color(0, 0, 0));
+				case DESTROYED_BLOCK: g.setColor(new Color(0, 0, 255));
 					break;
-				case 2: g.setColor(new Color(0, 0, 255));
+				case STATIC_BLOCK: g.setColor(new Color(0, 0, 0));
 					break;
-				case 3: g.setColor(new Color(255, 50, 50));
+				case BOMB_BLOCK: g.setColor(new Color(0, 200, 100));
+					break;
 				}
 				g.fillRect(i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK , MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK);
 			}
@@ -78,11 +85,11 @@ public class GamePanel extends JPanel implements ActionListener {
 			for (int j = 0; j < MainFrame.DEFAULT_BLOCK_NUMBER; j++) {
 				if (i == 0 || i == MainFrame.DEFAULT_BLOCK_NUMBER - 1 || j == 0
 						|| j == MainFrame.DEFAULT_BLOCK_NUMBER - 1 || (i % 2 == 0 && j % 2 == 0)) {
-					blocksArray[i][j] = 1;
+					blocksArray[i][j] = STATIC_BLOCK;
 				} else if(Math.random() * 100 > BLOCK_SPAWN && i + j > 3
 						&& i + j < 2 * (MainFrame.DEFAULT_BLOCK_NUMBER - 3)
 						) {
-					blocksArray[i][j] = 2;
+					blocksArray[i][j] = DESTROYED_BLOCK;
 				}
 				
 			}

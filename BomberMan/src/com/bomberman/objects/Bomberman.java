@@ -2,6 +2,8 @@ package com.bomberman.objects;
 
 import java.util.ArrayList;
 
+import com.bomberman.gui.GamePanel;
+
 
 public class Bomberman {
 
@@ -16,10 +18,10 @@ public class Bomberman {
 	public ArrayList<Bomb> bombsList = new ArrayList<Bomb>();
 	
 	private int score = 0;
-	private int lifes = 1;
-	private int speed = 4;
+	public int lifes = 1;
+//	private int speed = 4;
 	private int firePower = 1;
-	public static int bombs = 2;
+	public int bombs = 2;
 	
 
 	public Bomberman() {
@@ -45,34 +47,33 @@ public class Bomberman {
 		this.blocksArray = blocksArray;
 	}
 	
+	public void setBomb() {
+		new Bomb(x, y, blocksArray, this);
+	}
+	
 	public void moveUp() {
-		if(y > 1 && x % 2 == 1 && blocksArray[x][y - 1] < 1){
+		if(y > 1 && x % 2 == 1 && blocksArray[x][y - 1] < GamePanel.DESTROYED_BLOCK){
 			y--;
 		}
 	}
 	
 	public void moveRight() {
-		if(x < 15 && y % 2 == 1 && blocksArray[x + 1][y] < 1 ){
+		if(x < 15 && y % 2 == 1 && blocksArray[x + 1][y] < GamePanel.DESTROYED_BLOCK ){
 			x++;
 		}
 	}
 	
 	public void moveDown() {
-		if(y < 15 && x % 2 == 1 && blocksArray[x][y + 1] < 1){
+		if(y < 15 && x % 2 == 1 && blocksArray[x][y + 1] < GamePanel.DESTROYED_BLOCK){
 			y++;
 		}
 	}
 	
 	public void moveLeft() {
-		if(x > 1 && y % 2 == 1 && blocksArray[x - 1][y] < 1) {
+		if(x > 1 && y % 2 == 1 && blocksArray[x - 1][y] < GamePanel.DESTROYED_BLOCK) {
 			x--;
 		}
 	}
-	
-	public void setBomb() {
-		new Bomb(x, y, blocksArray);
-	}
-	
 	
 	public String getName() {
 		return name;
@@ -106,11 +107,11 @@ public class Bomberman {
 		this.y = y;
 	}
 
-	public int getSpeed() {
-		return speed;
+	public int getLifes() {
+		return lifes;
 	}
 
-	public void setSpeed(int speed) {
-		this.speed = speed;
+	public void setLifes(int lifes) {
+		this.lifes = lifes;
 	}
 }

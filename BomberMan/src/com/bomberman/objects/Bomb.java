@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
+import com.bomberman.gui.GamePanel;
+
 
 public class Bomb implements ActionListener {
 	
@@ -14,13 +16,16 @@ public class Bomb implements ActionListener {
 	
 	private int[][] blocksArray;
 	
+	private Bomberman bomberman;
+	
 	private Timer timer;
 	
-	public Bomb(int x, int y, int[][] blocksArray) {
-		this.blocksArray = blocksArray;
+	public Bomb(int x, int y, int[][] blocksArray, Bomberman bomberman) {
 		this.x = x;
 		this.y = y;
-		blocksArray[x][y] = 3;
+		this.blocksArray = blocksArray;
+		this.bomberman = bomberman;
+		blocksArray[x][y] = GamePanel.BOMB_BLOCK;
 		timer = new Timer(3000, this);
 		timer.start();
 	}
@@ -28,12 +33,18 @@ public class Bomb implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(timer.isRepeats()) {
-			Bomberman.bombs++;
-			blocksArray[x][y] = 0;
-			blocksArray[x+1][y] = 0;
-			blocksArray[x-1][y] = 0;
-			blocksArray[x][y+1] = 0;
-			blocksArray[x][y-1] = 0;
+			int pX = bomberman.getX();
+			int pY = bomberman.getY();
+			bomberman.bombs++;
+			blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
+//			if(pX ){
+//			if((pX >= x - 1 && pX <= x + 1) || (pY >= y - 1 && pY <= y + 1)) bomberman.lifes--;
+//		}
+//			Не баг а фіча
+			if(blocksArray[x+1][y] != GamePanel.STATIC_BLOCK) blocksArray[x+1][y] = GamePanel.EMPTY_BLOCK;
+			if(blocksArray[x-1][y] != GamePanel.STATIC_BLOCK) blocksArray[x-1][y] = GamePanel.EMPTY_BLOCK;
+			if(blocksArray[x][y+1] != GamePanel.STATIC_BLOCK) blocksArray[x][y+1] = GamePanel.EMPTY_BLOCK;
+			if(blocksArray[x][y-1] != GamePanel.STATIC_BLOCK) blocksArray[x][y-1] = GamePanel.EMPTY_BLOCK;
 			timer.stop();
 		}
 	}

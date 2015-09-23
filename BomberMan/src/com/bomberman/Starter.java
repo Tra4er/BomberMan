@@ -4,7 +4,7 @@ import javax.swing.SwingUtilities;
 
 import com.bomberman.gui.MainFrame;
 
-public class Game {
+public class Starter {
 	
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
