@@ -6,8 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.geom.Point2D;
+import java.util.Stack;
 
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 import com.bomberman.objects.Bomberman;
 
@@ -18,9 +21,16 @@ public class GamePanel extends JPanel implements ActionListener {
 	private final int BLOCK_SPAWN = 50;
 	
 	private int[][] blocksArray = new int[MainFrame.DEFAULT_BLOCK_NUMBER][MainFrame.DEFAULT_BLOCK_NUMBER];
-
+	
+	private int bombsSet;
+	
 	public Bomberman playerOne;
 	public Bomberman playerTwo;
+	
+	private Stack<Point2D.Double> bombStack = new Stack<Point2D.Double>();
+	
+	private final int DETONATE_TIME = 5000;
+	public Timer timer = new Timer(DETONATE_TIME, this);
 
 	public GamePanel() {
 		setFocusable(true);
@@ -33,7 +43,6 @@ public class GamePanel extends JPanel implements ActionListener {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-
 		g.setColor(new Color(212, 235, 210));
 		g.fillRect(0, 0, MainFrame.DEFAULT_SCREEN_WIDTH, MainFrame.DEFAULT_SCREEN_HEIGHT);
 
@@ -47,20 +56,12 @@ public class GamePanel extends JPanel implements ActionListener {
 					break;
 				case 2: g.setColor(new Color(0, 0, 255));
 					break;
+				case 3: g.setColor(new Color(255, 50, 50));
 				}
 				g.fillRect(i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK , MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK);
 			}
 		}
 		
-//		g.setColor(new Color(0, 255, 0));
-//		for (int c = 0; c < MainFrame.DEFAULT_SCREEN_HEIGHT; c += 10) {
-//			g.drawLine(0, c, MainFrame.DEFAULT_SCREEN_WIDTH, c );
-//		}
-//		for (int c = 0; c < MainFrame.DEFAULT_SCREEN_HEIGHT; c += 10) {
-//			g.drawLine(c, 0, c, MainFrame.DEFAULT_SCREEN_HEIGHT);
-//		}
-
-
 		g.setColor(Color.RED);
 		g.fillRect(playerOne.getX() * MainFrame.DEFAULT_BLOCK, playerOne.getY() * MainFrame.DEFAULT_BLOCK, 40, 40);
 		g.setColor(new Color(255, 255, 0));
@@ -68,8 +69,8 @@ public class GamePanel extends JPanel implements ActionListener {
 	}
 
 	private void initPlayers() {
-		playerOne = new Bomberman(15, 15, "Illai", blocksArray);
-		playerTwo = new Bomberman(1, 1, "YR17", blocksArray);
+		playerOne = new Bomberman(1, 1, "Illai", blocksArray);
+		playerTwo = new Bomberman(15, 15, "YR17", blocksArray);
 	}
 	
 	private void initBlocksArray() {
@@ -90,46 +91,69 @@ public class GamePanel extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if(bombsSet > 0 && timer.isRepeats()) {
+			System.out.println("Pasted \"if\" of isBombSet and TimerRepeats");
+			playerOne.detonate(bombStack);
+//			playerTwo.detonate(bombStack);
+			bombsSet--;
+			if(bombsSet == 0) timer.stop();
+		}
 		repaint();
 	}
 	
 
 	private class KeyController extends KeyAdapter {
 		@Override
-		public void keyPressed(KeyEvent e) {
+		public void keyReleased(KeyEvent e) {
 			int keyID = e.getKeyCode();
 
 			switch (keyID) {
-			case KeyEvent.VK_UP:
+			case KeyEvent.VK_W:
 				playerOne.moveUp();
 				repaint();
 				break;
-			case KeyEvent.VK_W:
+			case KeyEvent.VK_D:
+				playerOne.moveRight();
+				repaint();
+				break;
+			case KeyEvent.VK_S:
+				playerOne.moveDown();
+				repaint();
+				break;
+			case KeyEvent.VK_A:
+				playerOne.moveLeft();
+				repaint();
+				break;
+			case KeyEvent.VK_SPACE:
+				playerOne.setBomb(bombStack);
+				timer.start();
+				bombsSet++;
+				repaint();
+				break;
+				
+				
+				
+			case KeyEvent.VK_UP:
 				playerTwo.moveUp();
 				repaint();
 				break;
 			case KeyEvent.VK_RIGHT:
-				playerOne.moveRight();
-				repaint();
-				break;
-			case KeyEvent.VK_D:
 				playerTwo.moveRight();
 				repaint();
 				break;
 			case KeyEvent.VK_DOWN:
-				playerOne.moveDown();
-				repaint();
-				break;
-			case KeyEvent.VK_S:
 				playerTwo.moveDown();
 				repaint();
-				break;
+				break;	
 			case KeyEvent.VK_LEFT:
-				playerOne.moveLeft();
+				playerTwo.moveLeft();
 				repaint();
 				break;
-			case KeyEvent.VK_A:
-				playerTwo.moveLeft();
+				
+			case KeyEvent.VK_ENTER:
+				playerTwo.setBomb(bombStack);
+				timer.start();
+				bombsSet++;
 				repaint();
 				break;
 			}
