@@ -34,7 +34,6 @@ public class MainPanel extends JPanel {
 	}
 	
 	private void setGamePanel() {
-//		gamePanel = new GamePanel();
 		add(gamePanel, BorderLayout.CENTER);
 	}
 

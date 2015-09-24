@@ -2,15 +2,14 @@ package com.bomberman.gui;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.geom.Point2D;
-import java.util.Stack;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.Timer;
 
 import com.bomberman.objects.Bomberman;
 
@@ -31,11 +30,9 @@ public class GamePanel extends JPanel implements ActionListener {
 	public Bomberman playerOne;
 	public Bomberman playerTwo;
 	
-	public static Stack<Point2D.Double> bombStack = new Stack<Point2D.Double>();
+	private Image playerOneImage = new ImageIcon("res/PinkBomberman.png").getImage();
+	private Image playerTwoImage = new ImageIcon("res/YellowBomberman.png").getImage();
 	
-	private final int DETONATE_TIME = 100;
-	public Timer timer = new Timer(DETONATE_TIME, this);
-
 	public GamePanel() {
 		setFocusable(true);
 		addKeyListener(new KeyController());
@@ -55,9 +52,9 @@ public class GamePanel extends JPanel implements ActionListener {
 		for (int i = 0; i < MainFrame.DEFAULT_BLOCK_NUMBER; i++) {
 			for (int j = 0; j < MainFrame.DEFAULT_BLOCK_NUMBER; j++) {
 				switch (blocksArray[i][j]) {
-				case EMPTY_BLOCK: g.setColor(new Color(0, 50, 50));
+				case EMPTY_BLOCK: g.setColor(Color.GRAY);
 					break;
-				case DESTROYED_BLOCK: g.setColor(new Color(0, 0, 255));
+				case DESTROYED_BLOCK: g.setColor(Color.BLUE);
 					break;
 				case STATIC_BLOCK: g.setColor(new Color(0, 0, 0));
 					break;
@@ -68,10 +65,8 @@ public class GamePanel extends JPanel implements ActionListener {
 			}
 		}
 		
-		g.setColor(Color.RED);
-		g.fillRect(playerOne.getX() * MainFrame.DEFAULT_BLOCK, playerOne.getY() * MainFrame.DEFAULT_BLOCK, 40, 40);
-		g.setColor(new Color(255, 255, 0));
-		g.fillRect(playerTwo.getX() * MainFrame.DEFAULT_BLOCK, playerTwo.getY() * MainFrame.DEFAULT_BLOCK, 40, 40);
+		g.drawImage(playerOneImage, playerOne.getX() * MainFrame.DEFAULT_BLOCK, playerOne.getY() * MainFrame.DEFAULT_BLOCK, 40, 40, null);
+		g.drawImage(playerTwoImage, playerTwo.getX() * MainFrame.DEFAULT_BLOCK, playerTwo.getY() * MainFrame.DEFAULT_BLOCK, 40, 40, null);
 		repaint();
 	}
 

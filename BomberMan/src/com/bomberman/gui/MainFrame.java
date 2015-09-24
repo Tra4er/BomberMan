@@ -40,12 +40,12 @@ public class MainFrame extends JFrame {
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension dem = kit.getScreenSize();
 
-		Image icon = new ImageIcon("res/bombIcon.png").getImage();
+		Image icon = new ImageIcon("res/bomb2.gif").getImage();
 		setIconImage(icon);
 		
 		setLocation(dem.width / 5, 0);
 		setSize(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT);
-		setResizable(false);
+		setResizable(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
