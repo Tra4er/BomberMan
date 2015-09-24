@@ -33,6 +33,11 @@ public class GamePanel extends JPanel implements ActionListener {
 	private Image playerOneImage = new ImageIcon("res/PinkBomberman.png").getImage();
 	private Image playerTwoImage = new ImageIcon("res/YellowBomberman.png").getImage();
 	
+	private Image emptyBlockImage = new ImageIcon("res/EmptyBlock.jpg").getImage();
+	private Image destroyedBlockImage = new ImageIcon("res/DestroyedBlock.jpg").getImage();
+	private Image staticBlockImage = new ImageIcon("res/StaticBlock.jpg").getImage();
+	private Image bombImage = new ImageIcon("res/Bomb.png").getImage();
+	
 	public GamePanel() {
 		setFocusable(true);
 		addKeyListener(new KeyController());
@@ -52,16 +57,15 @@ public class GamePanel extends JPanel implements ActionListener {
 		for (int i = 0; i < MainFrame.DEFAULT_BLOCK_NUMBER; i++) {
 			for (int j = 0; j < MainFrame.DEFAULT_BLOCK_NUMBER; j++) {
 				switch (blocksArray[i][j]) {
-				case EMPTY_BLOCK: g.setColor(Color.GRAY);
+				case EMPTY_BLOCK: g.drawImage(emptyBlockImage, i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK , MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, null);
 					break;
-				case DESTROYED_BLOCK: g.setColor(Color.BLUE);
+				case DESTROYED_BLOCK: g.drawImage(destroyedBlockImage, i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK , MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, null);
 					break;
-				case STATIC_BLOCK: g.setColor(new Color(0, 0, 0));
+				case STATIC_BLOCK: g.drawImage(staticBlockImage, i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK , MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, null);
 					break;
-				case BOMB_BLOCK: g.setColor(new Color(0, 200, 100));
+				case BOMB_BLOCK: g.drawImage(bombImage, i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK , MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, null);
 					break;
 				}
-				g.fillRect(i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK , MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK);
 			}
 		}
 		

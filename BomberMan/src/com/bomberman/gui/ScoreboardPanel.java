@@ -2,10 +2,13 @@ package com.bomberman.gui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
@@ -14,8 +17,10 @@ public class ScoreboardPanel extends JPanel {
 
 	private static final long serialVersionUID = -5566101902542874021L;
 	
-	private final Border LABEL_BORDER = BorderFactory.createEmptyBorder(5, 5, 5, 5);
-    private final Border MAIN_BORDER = BorderFactory.createMatteBorder(2, 2, 3, 2, Color.GREEN);
+	private Image backgroundImage = new ImageIcon("res/ScoreBG.jpg").getImage();
+	
+	private final Border LABEL_BORDER = BorderFactory.createEmptyBorder(3, 3, 3, 3);
+    private final Border MAIN_BORDER = BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GREEN);
     private final Font FONT = new Font("Jokerman", Font.PLAIN, 14);
     
     private JLabel playerOneName;
@@ -35,37 +40,44 @@ public class ScoreboardPanel extends JPanel {
 		playerTwoName = new JLabel(gamePanel.playerTwo.getName());
 	
 		setLayout(new GridBagLayout());
-		GridBagConstraints gc = new GridBagConstraints();
+		GridBagConstraints gridBag = new GridBagConstraints();
 		
 		configLabels();
 		
-		gc.weightx = 1;
-		gc.weighty = 1;
+		gridBag.weightx = 1;
+		gridBag.weighty = 1;
 		
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.gridx = 0;
-		gc.gridy = 0;
-		add(playerOneName, gc);
+		gridBag.anchor = GridBagConstraints.LINE_START;
+		gridBag.gridx = 0;
+		gridBag.gridy = 0;
+		add(playerOneName, gridBag);
 		
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.gridx = 1;
-		gc.gridy = 0;
-		add(playerOneScore, gc);
+		gridBag.anchor = GridBagConstraints.LINE_START;
+		gridBag.gridx = 1;
+		gridBag.gridy = 0;
+		add(playerOneScore, gridBag);
 		
-		gc.anchor = GridBagConstraints.CENTER;
-		gc.gridx = 2;
-		gc.gridy = 0;
-		add(playerScore1, gc);
+		gridBag.anchor = GridBagConstraints.CENTER;
+		gridBag.gridx = 2;
+		gridBag.gridy = 0;
+		add(playerScore1, gridBag);
 	
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.gridx = 3;
-		gc.gridy = 0;
-		add(playerTwoScore, gc);
+		gridBag.anchor = GridBagConstraints.LINE_END;
+		gridBag.gridx = 3;
+		gridBag.gridy = 0;
+		add(playerTwoScore, gridBag);
 		
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.gridx = 4;
-		gc.gridy = 0;
-		add(playerTwoName, gc);
+		gridBag.anchor = GridBagConstraints.LINE_END;
+		gridBag.gridx = 4;
+		gridBag.gridy = 0;
+		add(playerTwoName, gridBag);
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.drawImage(backgroundImage, 0, 0, MainFrame.DEFAULT_SCREEN_WIDTH, 30, null);
+//		g.drawImage(backgroundImage, 0, 0, null);
 	}
 	
 	private void configLabels(){
