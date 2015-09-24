@@ -22,6 +22,7 @@ public class Bomberman {
 //	private int speed = 4;
 	private int firePower = 1;
 	public int bombs = 2;
+	public boolean dead;
 	
 
 	public Bomberman() {

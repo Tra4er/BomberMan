@@ -55,15 +55,24 @@ public class Bomb implements ActionListener {
 							up = false;	
 						}
 						if(!hit){
+							
 							if((x == bomberman.getX() && y - i == bomberman.getY()) || (x == secondPlayer.getX() && y - i == secondPlayer.getY())) {
 								bomberman.lifes--;
 								System.out.println("Hit");
 								hit = true;
 							}
-						} else if(!dead){
-							if(bomberman.lifes < 1 || secondPlayer.lifes < 1){
-								dead = true;
-								System.out.println("Dead");
+							
+							if(!bomberman.dead){  
+								if(bomberman.lifes < 1){
+									bomberman.dead = true;
+									System.out.println("Dead bomberman");
+								}
+							}
+							if(!secondPlayer.dead){
+								if(secondPlayer.lifes < 1){
+									secondPlayer.dead = true;
+									System.out.println("Dead secondPlayer");
+								}
 							}
 						}
 					} else up = false;
@@ -75,17 +84,26 @@ public class Bomb implements ActionListener {
 							right = false;	
 						}
 						if(!hit){
+							
 							if((x + i == bomberman.getX() && y == bomberman.getY()) || (x + i == secondPlayer.getX() && y == secondPlayer.getY())) {
 								bomberman.lifes--;
 								System.out.println("Hit");
 								hit = true;
 							}
-						} else if(!dead){
-							if(bomberman.lifes < 1 || secondPlayer.lifes < 1){
-								dead = true;
-								System.out.println("Dead");
+							
+							if(!bomberman.dead){  
+								if(bomberman.lifes < 1){
+									bomberman.dead = true;
+									System.out.println("Dead bomberman");
+								}
 							}
-						}
+							if(!secondPlayer.dead){
+								if(secondPlayer.lifes < 1){
+									secondPlayer.dead = true;
+									System.out.println("Dead secondPlayer");
+								}
+							}
+						} 
 					} else right = false;
 				}
 				if(down && y + i > 0) {
@@ -95,17 +113,26 @@ public class Bomb implements ActionListener {
 							down = false;	
 						} 
 						if(!hit){
+							
 							if((x == bomberman.getX() && y + i == bomberman.getY()) || (x == secondPlayer.getX() && y + i == secondPlayer.getY())) {
 								bomberman.lifes--;
 								System.out.println("Hit");
 								hit = true;
 							}
-						} else if(!dead){
-							if(bomberman.lifes < 1 || secondPlayer.lifes < 1){
-								dead = true;
-								System.out.println("Dead");
+							
+							if(!bomberman.dead){  
+								if(bomberman.lifes < 1){
+									bomberman.dead = true;
+									System.out.println("Dead bomberman");
+								}
 							}
-						}
+							if(!secondPlayer.dead){
+								if(secondPlayer.lifes < 1){
+									secondPlayer.dead = true;
+									System.out.println("Dead secondPlayer");
+								}
+							}
+						} 
 					} else down = false;
 				}
 				if(left && x - i > 0){
@@ -115,15 +142,24 @@ public class Bomb implements ActionListener {
 							left = false;	
 						} 
 						if(!hit){
+							
 							if((x - i == bomberman.getX() && y == bomberman.getY()) || (x - i == secondPlayer.getX() && y == secondPlayer.getY())) {
 								bomberman.lifes--;
 								System.out.println("Hit");
 								hit = true;
 							}
-						} else if(!dead){  
-							if(bomberman.lifes < 1 || secondPlayer.lifes < 1){
-								dead = true;
-								System.out.println("Dead");
+							
+							if(!bomberman.dead){  
+								if(bomberman.lifes < 1){
+									bomberman.dead = true;
+									System.out.println("Dead bomberman");
+								}
+							}
+							if(!secondPlayer.dead){
+								if(secondPlayer.lifes < 1){
+									secondPlayer.dead = true;
+									System.out.println("Dead secondPlayer");
+								}
 							}
 						}
 					} else left = false;
