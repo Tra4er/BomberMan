@@ -18,7 +18,7 @@ public class Bomberman {
 	public ArrayList<Bomb> bombsList = new ArrayList<Bomb>();
 	
 	private int score = 0;
-	public int lifes = 1;
+	public int lifes = 2;
 //	private int speed = 4;
 	private int firePower = 1;
 	public int bombs = 2;
@@ -47,8 +47,8 @@ public class Bomberman {
 		this.blocksArray = blocksArray;
 	}
 	
-	public void setBomb() {
-		new Bomb(x, y, blocksArray, this);
+	public void setBomb(Bomberman secondPlayer) {
+		new Bomb(x, y, blocksArray, this, secondPlayer);
 	}
 	
 	public void moveUp() {

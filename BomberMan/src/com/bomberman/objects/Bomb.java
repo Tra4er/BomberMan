@@ -21,17 +21,22 @@ public class Bomb implements ActionListener {
 	private boolean down = true;
 	private boolean left = true;
 	
+	private boolean hit;
+	private boolean dead;
+	
 	private int[][] blocksArray;
 	
 	private Bomberman bomberman;
+	private Bomberman secondPlayer;
 
 	private Timer timer;
 	
-	public Bomb(int x, int y, int[][] blocksArray, Bomberman bomberman) {
+	public Bomb(int x, int y, int[][] blocksArray, Bomberman bomberman, Bomberman secondPlayer) {
 		this.x = x;
 		this.y = y;
 		this.blocksArray = blocksArray;
 		this.bomberman = bomberman;
+		this.secondPlayer = secondPlayer;
 		blocksArray[x][y] = GamePanel.BOMB_BLOCK;
 		timer = new Timer(3000, this);
 		timer.start();
@@ -48,7 +53,18 @@ public class Bomb implements ActionListener {
 						if(blocksArray[x][y - i] == GamePanel.DESTROYED_BLOCK){
 							blocksArray[x][y - i] = GamePanel.EMPTY_BLOCK;
 							up = false;	
-	//						bomberman.lifes--;
+						}
+						if(!hit){
+							if((x == bomberman.getX() && y - i == bomberman.getY()) || (x == secondPlayer.getX() && y - i == secondPlayer.getY())) {
+								bomberman.lifes--;
+								System.out.println("Hit");
+								hit = true;
+							}
+						} else if(!dead){
+							if(bomberman.lifes < 1 || secondPlayer.lifes < 1){
+								dead = true;
+								System.out.println("Dead");
+							}
 						}
 					} else up = false;
 				}
@@ -57,7 +73,18 @@ public class Bomb implements ActionListener {
 						if(blocksArray[x + i][y] == GamePanel.DESTROYED_BLOCK){
 							blocksArray[x + i][y] = GamePanel.EMPTY_BLOCK;
 							right = false;	
-	//						bomberman.lifes--;
+						}
+						if(!hit){
+							if((x + i == bomberman.getX() && y == bomberman.getY()) || (x + i == secondPlayer.getX() && y == secondPlayer.getY())) {
+								bomberman.lifes--;
+								System.out.println("Hit");
+								hit = true;
+							}
+						} else if(!dead){
+							if(bomberman.lifes < 1 || secondPlayer.lifes < 1){
+								dead = true;
+								System.out.println("Dead");
+							}
 						}
 					} else right = false;
 				}
@@ -66,8 +93,19 @@ public class Bomb implements ActionListener {
 						if(blocksArray[x][y + i] == GamePanel.DESTROYED_BLOCK){
 							blocksArray[x][y + i] = GamePanel.EMPTY_BLOCK;
 							down = false;	
-	//						bomberman.lifes--;
 						} 
+						if(!hit){
+							if((x == bomberman.getX() && y + i == bomberman.getY()) || (x == secondPlayer.getX() && y + i == secondPlayer.getY())) {
+								bomberman.lifes--;
+								System.out.println("Hit");
+								hit = true;
+							}
+						} else if(!dead){
+							if(bomberman.lifes < 1 || secondPlayer.lifes < 1){
+								dead = true;
+								System.out.println("Dead");
+							}
+						}
 					} else down = false;
 				}
 				if(left && x - i > 0){
@@ -75,8 +113,19 @@ public class Bomb implements ActionListener {
 						if(blocksArray[x - i][y] == GamePanel.DESTROYED_BLOCK){
 							blocksArray[x - i][y] = GamePanel.EMPTY_BLOCK;
 							left = false;	
-	//						bomberman.lifes--;
 						} 
+						if(!hit){
+							if((x - i == bomberman.getX() && y == bomberman.getY()) || (x - i == secondPlayer.getX() && y == secondPlayer.getY())) {
+								bomberman.lifes--;
+								System.out.println("Hit");
+								hit = true;
+							}
+						} else if(!dead){  
+							if(bomberman.lifes < 1 || secondPlayer.lifes < 1){
+								dead = true;
+								System.out.println("Dead");
+							}
+						}
 					} else left = false;
 				}
 			}

@@ -49,7 +49,6 @@ public class GamePanel extends JPanel implements ActionListener {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		if(playerOne.getLifes() < 1) System.out.println("DEAD");
 		g.setColor(new Color(212, 235, 210));
 		g.fillRect(0, 0, MainFrame.DEFAULT_SCREEN_WIDTH, MainFrame.DEFAULT_SCREEN_HEIGHT);
 
@@ -125,7 +124,7 @@ public class GamePanel extends JPanel implements ActionListener {
 				break;
 			case KeyEvent.VK_SPACE:
 				if(playerOne.bombs > 0){
-					playerOne.setBomb();
+					playerOne.setBomb(playerTwo);
 					playerOne.bombs--;
 					repaint();
 				}
@@ -152,7 +151,7 @@ public class GamePanel extends JPanel implements ActionListener {
 				
 			case KeyEvent.VK_ENTER:
 				if(playerTwo.bombs > 0){
-					playerTwo.setBomb();
+					playerTwo.setBomb(playerOne);
 					playerTwo.bombs--;
 					repaint();
 				}
