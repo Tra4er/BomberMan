@@ -6,12 +6,15 @@ import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
+import java.util.Timer;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+
+import com.bomberman.util.RoundTimer;
 
 public class ScoreboardPanel extends JPanel {
 
@@ -23,9 +26,10 @@ public class ScoreboardPanel extends JPanel {
     private final Border MAIN_BORDER = BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GREEN);
     private final Font FONT = new Font("Jokerman", Font.PLAIN, 14);
     
+    private Timer timer = new Timer();
     private JLabel playerOneName;
     private JLabel playerOneScore;
-    private JLabel playerScore1;
+    private RoundTimer roundTimer;
     private JLabel playerTwoScore;
     private JLabel playerTwoName;
 	
@@ -35,7 +39,7 @@ public class ScoreboardPanel extends JPanel {
 		
 		playerOneName = new JLabel(gamePanel.playerOne.getName());
 		playerOneScore = new JLabel(gamePanel.playerOne.getScore());
-		playerScore1 = new JLabel("2000");
+		roundTimer = new RoundTimer(timer);
 		playerTwoScore = new JLabel(gamePanel.playerTwo.getScore());
 		playerTwoName = new JLabel(gamePanel.playerTwo.getName());
 	
@@ -47,12 +51,12 @@ public class ScoreboardPanel extends JPanel {
 		gridBag.weightx = 1;
 		gridBag.weighty = 1;
 		
-		gridBag.anchor = GridBagConstraints.LINE_START;
+		gridBag.anchor = GridBagConstraints.PAGE_START;
 		gridBag.gridx = 0;
 		gridBag.gridy = 0;
 		add(playerOneName, gridBag);
 		
-		gridBag.anchor = GridBagConstraints.LINE_START;
+		gridBag.anchor = GridBagConstraints.PAGE_START;
 		gridBag.gridx = 1;
 		gridBag.gridy = 0;
 		add(playerOneScore, gridBag);
@@ -60,14 +64,14 @@ public class ScoreboardPanel extends JPanel {
 		gridBag.anchor = GridBagConstraints.CENTER;
 		gridBag.gridx = 2;
 		gridBag.gridy = 0;
-		add(playerScore1, gridBag);
+		add(roundTimer, gridBag);
 	
-		gridBag.anchor = GridBagConstraints.LINE_END;
+		gridBag.anchor = GridBagConstraints.PAGE_END;
 		gridBag.gridx = 3;
 		gridBag.gridy = 0;
 		add(playerTwoScore, gridBag);
 		
-		gridBag.anchor = GridBagConstraints.LINE_END;
+		gridBag.anchor = GridBagConstraints.PAGE_END;
 		gridBag.gridx = 4;
 		gridBag.gridy = 0;
 		add(playerTwoName, gridBag);
@@ -77,7 +81,6 @@ public class ScoreboardPanel extends JPanel {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(backgroundImage, 0, 0, MainFrame.DEFAULT_SCREEN_WIDTH, 30, null);
-//		g.drawImage(backgroundImage, 0, 0, null);
 	}
 	
 	private void configLabels(){
@@ -87,7 +90,8 @@ public class ScoreboardPanel extends JPanel {
 		playerOneScore.setBorder(LABEL_BORDER);
 		playerOneScore.setFont(FONT);
 		
-		playerScore1.setBorder(LABEL_BORDER);
+		roundTimer.setBorder(LABEL_BORDER);
+//		roundTimer.setFont(FONT);
 		
 		playerTwoScore.setBorder(LABEL_BORDER);
 		playerTwoScore.setFont(FONT);

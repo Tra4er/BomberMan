@@ -22,7 +22,6 @@ public class Bomb implements ActionListener {
 	private boolean left = true;
 	
 	private boolean hit;
-	private boolean dead;
 	
 	private int[][] blocksArray;
 	
