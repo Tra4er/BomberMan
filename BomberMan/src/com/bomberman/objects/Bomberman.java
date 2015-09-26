@@ -1,11 +1,12 @@
 package com.bomberman.objects;
 
-import java.util.ArrayList;
 
 import com.bomberman.gui.GamePanel;
 
 
 public class Bomberman {
+	
+	private static final String DEFAULT_PLAYER_NAME = "Player";
 
 	private int x;
 	private int y;
@@ -15,30 +16,28 @@ public class Bomberman {
 	private String name;
 	private String bestTime;
 	
-	public ArrayList<Bomb> bombsList = new ArrayList<Bomb>();
-	
-	private int score = 0;
+	public int score = 0;
 	public int lifes = 2;
 //	private int speed = 4;
-	private int firePower = 1;
+	private int firePower = 2;
 	public int bombs = 2;
 	public boolean dead;
 	
 
-	public Bomberman() {
-		this(1, 1, "Player", blocksArray);
-	}
-
-	public Bomberman(int x, int y) {
-		this(x, y, "Player", blocksArray);
-	}
-	
-	public Bomberman(String name){
-		this(1, 1, name, blocksArray);
-	}
+//	public Bomberman() {
+//		this(1, 1, "Player", blocksArray);
+//	}
+//
+//	public Bomberman(int x, int y) {
+//		this(x, y, "Player", blocksArray);
+//	}
+//	
+//	public Bomberman(String name){
+//		this(1, 1, name, blocksArray);
+//	}
 	
 	public Bomberman(int[][] blocksArray) {
-		this(1, 1, "Player", blocksArray);
+		this(1, 1, DEFAULT_PLAYER_NAME, blocksArray);
 	}
 
 	public Bomberman(int x, int y, String name, int[][] blocksArray) {
@@ -55,24 +54,28 @@ public class Bomberman {
 	public void moveUp() {
 		if(y > 1 && x % 2 == 1 && blocksArray[x][y - 1] < GamePanel.DESTROYED_BLOCK){
 			y--;
+			if(blocksArray[x][y] == GamePanel.FIRE_BLOCK) lifes--;
 		}
 	}
 	
 	public void moveRight() {
 		if(x < 15 && y % 2 == 1 && blocksArray[x + 1][y] < GamePanel.DESTROYED_BLOCK ){
 			x++;
+			if(blocksArray[x][y] == GamePanel.FIRE_BLOCK) lifes--;
 		}
 	}
 	
 	public void moveDown() {
 		if(y < 15 && x % 2 == 1 && blocksArray[x][y + 1] < GamePanel.DESTROYED_BLOCK){
 			y++;
+			if(blocksArray[x][y] == GamePanel.FIRE_BLOCK) lifes--;
 		}
 	}
 	
 	public void moveLeft() {
 		if(x > 1 && y % 2 == 1 && blocksArray[x - 1][y] < GamePanel.DESTROYED_BLOCK) {
 			x--;
+			if(blocksArray[x][y] == GamePanel.FIRE_BLOCK) lifes--;
 		}
 	}
 	
@@ -114,5 +117,13 @@ public class Bomberman {
 
 	public void setLifes(int lifes) {
 		this.lifes = lifes;
+	}
+
+	public int getFirePower() {
+		return firePower;
+	}
+
+	public void setFirePower(int firePower) {
+		this.firePower = firePower;
 	}
 }

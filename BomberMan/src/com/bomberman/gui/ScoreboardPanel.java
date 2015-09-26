@@ -6,6 +6,8 @@ import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Timer;
 
 import javax.swing.BorderFactory;
@@ -16,7 +18,7 @@ import javax.swing.border.Border;
 
 import com.bomberman.util.RoundTimer;
 
-public class ScoreboardPanel extends JPanel {
+public class ScoreboardPanel extends JPanel implements ActionListener {
 
 	private static final long serialVersionUID = -5566101902542874021L;
 	
@@ -35,7 +37,6 @@ public class ScoreboardPanel extends JPanel {
 	
     
 	public ScoreboardPanel(GamePanel gamePanel){
-		
 		
 		playerOneName = new JLabel(gamePanel.playerOne.getName());
 		playerOneScore = new JLabel(gamePanel.playerOne.getScore());
@@ -100,6 +101,11 @@ public class ScoreboardPanel extends JPanel {
 		playerTwoName.setFont(FONT);
 		
 		setBorder(MAIN_BORDER);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+//		playerOneScore.
 	}
 	
 }

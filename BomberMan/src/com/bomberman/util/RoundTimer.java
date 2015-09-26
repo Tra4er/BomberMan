@@ -15,7 +15,7 @@ public class RoundTimer extends JLabel {
 	}
 
 	private TimerTask timerTask = new TimerTask() {
-		private volatile int time = -1;
+		private int time = -1;
 
 		private Runnable refresher = new Runnable() {
 			@Override
