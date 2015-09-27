@@ -23,8 +23,8 @@ public class MainFrame extends JFrame {
 	
 	public static final int DEFAULT_BLOCK = 40;
 	public static final int DEFAULT_BLOCK_NUMBER = 17;
-	public static final int DEFAULT_SCREEN_WIDTH = 685;//685
-	public static final int DEFAULT_SCREEN_HEIGHT = 732;//732
+	public static final int DEFAULT_SCREEN_WIDTH = 696;//696
+	public static final int DEFAULT_SCREEN_HEIGHT = 772;//772
 
 	public MainFrame(String title) {
 

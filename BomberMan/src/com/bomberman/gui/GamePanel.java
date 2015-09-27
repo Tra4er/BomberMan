@@ -27,7 +27,6 @@ public class GamePanel extends JPanel implements ActionListener {
 	public static final int FIRE_BLOCK = -2;
 
 	private int[][] blocksArray = new int[MainFrame.DEFAULT_BLOCK_NUMBER][MainFrame.DEFAULT_BLOCK_NUMBER];
-	private int[][] bonusArray = new int[MainFrame.DEFAULT_BLOCK_NUMBER][MainFrame.DEFAULT_BLOCK_NUMBER];
 
 	public Bomberman playerOne;
 	public Bomberman playerTwo;
@@ -39,6 +38,7 @@ public class GamePanel extends JPanel implements ActionListener {
 	private Image destroyedBlockImage = new ImageIcon("res/DestroyedBlock.jpg").getImage();
 	private Image staticBlockImage = new ImageIcon("res/StaticBlock.jpg").getImage();
 	private Image bombImage = new ImageIcon("res/Bomb.png").getImage();
+	private Image fireImage = new ImageIcon("res/Fire.png").getImage();
 
 	public GamePanel() {
 		setFocusable(true);
@@ -50,10 +50,7 @@ public class GamePanel extends JPanel implements ActionListener {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.setColor(new Color(212, 235, 210));
-		g.fillRect(0, 0, MainFrame.DEFAULT_SCREEN_WIDTH, MainFrame.DEFAULT_SCREEN_HEIGHT);
 
-		g.setColor(Color.GRAY);
 		for (int i = 0; i < MainFrame.DEFAULT_BLOCK_NUMBER; i++) {
 			for (int j = 0; j < MainFrame.DEFAULT_BLOCK_NUMBER; j++) {
 				switch (blocksArray[i][j]) {
@@ -70,14 +67,25 @@ public class GamePanel extends JPanel implements ActionListener {
 							MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, null);
 					break;
 				case BOMB_BLOCK:
+					
+					g.drawImage(emptyBlockImage, i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK,
+							MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, null);
+					
 					g.drawImage(bombImage, i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK,
 							MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, null);
 					break;
 				case FIRE_BLOCK:
-					g.setColor(Color.RED);
-					g.fillRect(i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK,
-							MainFrame.DEFAULT_BLOCK);
+					
+					g.drawImage(emptyBlockImage, i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK,
+							MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, null);
+					
+					g.drawImage(fireImage, i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK,
+							MainFrame.DEFAULT_BLOCK, null);
 					break;
+				case BONUS_BLOCK:
+					g.setColor(Color.RED);
+					g.fillRect(i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK,
+							MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK);
 				}
 			}
 		}
@@ -91,8 +99,9 @@ public class GamePanel extends JPanel implements ActionListener {
 
 	private void initPlayers() {
 		playerOne = new Bomberman(1, 1, "Illai", blocksArray);
-		playerOne.setFirePower(1);
+		playerOne.setFirePower(2);
 		playerTwo = new Bomberman(15, 15, "YR17", blocksArray);
+		playerTwo.setFirePower(1);
 	}
 
 	private void initBlocksArray() {
