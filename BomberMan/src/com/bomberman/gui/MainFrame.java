@@ -15,16 +15,22 @@ import javax.swing.JMenuItem;
 public class MainFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private JMenuBar menuBar;
-	private JMenu menu;
-	private JMenuItem menuItem;
 	
+	private JMenu game;
+	private JMenuItem close;
+	private JMenuItem restart;
 	
+	private JMenu players;
+	private JMenuItem changeNames;
+	
+	private MainPanel mainPanel = new MainPanel();
+
 	public static final int DEFAULT_BLOCK = 40;
 	public static final int DEFAULT_BLOCK_NUMBER = 17;
-	public static final int DEFAULT_SCREEN_WIDTH = 696;//696
-	public static final int DEFAULT_SCREEN_HEIGHT = 772;//772
+	public static final int DEFAULT_SCREEN_WIDTH = 696;
+	public static final int DEFAULT_SCREEN_HEIGHT = 772;
 
 	public MainFrame(String title) {
 
@@ -32,38 +38,58 @@ public class MainFrame extends JFrame {
 
 		initMainFrame();
 		initBarMenu();
-		
-		add(new MainPanel());
+
+		add(mainPanel);
 	}
-	
-	private void initMainFrame(){
+
+	private void initMainFrame() {
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension dem = kit.getScreenSize();
 
 		Image icon = new ImageIcon("res/Bomb.png").getImage();
 		setIconImage(icon);
-		
+
 		setLocation(dem.width / 5, 0);
 		setSize(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT);
 		setResizable(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-	
-	private void initBarMenu(){
-		// TODO MENUBAR
+
+	private void initBarMenu() {
+		
 		menuBar = new JMenuBar();
-		menu = new JMenu("ONE");
-		menuItem = new JMenuItem("Close");
-		menuItem.addActionListener(new ActionListener(){
+		
+		game = new JMenu("Game");
+		restart = new JMenuItem("Restart");
+		close = new JMenuItem("Close");
+		restart.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-//				this.
+				MainFrame.this.remove(mainPanel);
+				mainPanel = new MainPanel();
+				MainFrame.this.add(mainPanel);
 			}
-			
+
 		});
-		menu.add(menuItem);
-		menuBar.add(menu);
+		
+		close.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MainFrame.this.dispose();
+			}
+
+		});
+		game.add(restart);
+		game.add(close);
+		menuBar.add(game);
+		
+		players = new JMenu("Players");
+		changeNames = new JMenuItem("Change Names");
+		players.add(changeNames);
+		menuBar.add(players);
+		
 		setJMenuBar(menuBar);
 	}
 

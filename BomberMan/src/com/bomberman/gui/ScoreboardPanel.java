@@ -31,7 +31,7 @@ public class ScoreboardPanel extends JPanel implements ActionListener {
     private Timer timer = new Timer();
     private JLabel playerOneName;
     private JLabel playerOneScore;
-    private RoundTimer roundTimer;
+    public static RoundTimer roundTimer;
     private JLabel playerTwoScore;
     private JLabel playerTwoName;
 	

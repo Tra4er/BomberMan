@@ -1,10 +1,7 @@
 package com.bomberman.gui;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -13,7 +10,7 @@ import javax.swing.JPanel;
 
 import com.bomberman.objects.Bomberman;
 
-public class GamePanel extends JPanel implements ActionListener {
+public class GamePanel extends JPanel{
 
 	private static final long serialVersionUID = -5908210750286572643L;
 
@@ -28,7 +25,6 @@ public class GamePanel extends JPanel implements ActionListener {
 	public static final int FIRE_BLOCK = -2;
 	public static final int BOMB_BONUS_BLOCK = -3;
 	public static final int LIFE_BONUS_BLOCK = -4;
-	
 
 	private int[][] blocksArray = new int[MainFrame.DEFAULT_BLOCK_NUMBER][MainFrame.DEFAULT_BLOCK_NUMBER];
 
@@ -74,24 +70,24 @@ public class GamePanel extends JPanel implements ActionListener {
 							MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, null);
 					break;
 				case BOMB_BLOCK:
-					
+
 					g.drawImage(emptyBlockImage, i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK,
 							MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, null);
-					
+
 					g.drawImage(bombImage, i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK,
 							MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, null);
 					break;
 				case FIRE_BLOCK:
-					
+
 					g.drawImage(emptyBlockImage, i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK,
 							MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, null);
-					
-					g.drawImage(fireImage, i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK,
-							MainFrame.DEFAULT_BLOCK, null);
+
+					g.drawImage(fireImage, i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK,
+							MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, null);
 					break;
 				case FIRE_BONUS_BLOCK:
-					g.drawImage(fireBonusImage, i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK,
-							MainFrame.DEFAULT_BLOCK, null);
+					g.drawImage(fireBonusImage, i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK,
+							MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, null);
 					break;
 				case BOMB_BONUS_BLOCK:
 					g.drawImage(bombBonusImage, i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK,
@@ -130,11 +126,6 @@ public class GamePanel extends JPanel implements ActionListener {
 
 			}
 		}
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		repaint();
 	}
 
 	private class KeyController extends KeyAdapter {

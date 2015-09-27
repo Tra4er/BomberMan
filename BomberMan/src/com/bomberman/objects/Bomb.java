@@ -59,12 +59,12 @@ public class Bomb implements ActionListener {
 
 					if (blocksArray[x][y - i] == GamePanel.DESTROYED_BLOCK) {
 						blocksArray[x][y - i] = GamePanel.FIRE_BLOCK;
-						if(Math.random() * 100 < GamePanel.BONUS_SPAWN){
-							switch((int) (Math.random() * 3)) {
+						if (Math.random() * 100 < GamePanel.BONUS_SPAWN) {
+							switch ((int) (Math.random() * 3)) {
 							case 0:
 								blocksArray[x][y - i] = GamePanel.FIRE_BONUS_BLOCK;
 								break;
-							case 1: 
+							case 1:
 								blocksArray[x][y - i] = GamePanel.BOMB_BONUS_BLOCK;
 								break;
 							case 2:
@@ -118,12 +118,12 @@ public class Bomb implements ActionListener {
 
 					if (blocksArray[x + i][y] == GamePanel.DESTROYED_BLOCK) {
 						blocksArray[x + i][y] = GamePanel.FIRE_BLOCK;
-						if(Math.random() * 100 < GamePanel.BONUS_SPAWN){
-							switch((int) (Math.random() * 3)) {
+						if (Math.random() * 100 < GamePanel.BONUS_SPAWN) {
+							switch ((int) (Math.random() * 3)) {
 							case 0:
 								blocksArray[x + i][y] = GamePanel.FIRE_BONUS_BLOCK;
 								break;
-							case 1: 
+							case 1:
 								blocksArray[x + i][y] = GamePanel.BOMB_BONUS_BLOCK;
 								break;
 							case 2:
@@ -175,12 +175,12 @@ public class Bomb implements ActionListener {
 
 					if (blocksArray[x][y + i] == GamePanel.DESTROYED_BLOCK) {
 						blocksArray[x][y + i] = GamePanel.FIRE_BLOCK;
-						if(Math.random() * 100 < GamePanel.BONUS_SPAWN){
-							switch((int) (Math.random() * 3)) {
+						if (Math.random() * 100 < GamePanel.BONUS_SPAWN) {
+							switch ((int) (Math.random() * 3)) {
 							case 0:
 								blocksArray[x][y + i] = GamePanel.FIRE_BONUS_BLOCK;
 								break;
-							case 1: 
+							case 1:
 								blocksArray[x][y + i] = GamePanel.BOMB_BONUS_BLOCK;
 								break;
 							case 2:
@@ -232,12 +232,12 @@ public class Bomb implements ActionListener {
 
 					if (blocksArray[x - i][y] == GamePanel.DESTROYED_BLOCK) {
 						blocksArray[x - i][y] = GamePanel.FIRE_BLOCK;
-						if(Math.random() * 100 < GamePanel.BONUS_SPAWN){
-							switch((int) (Math.random() * 3)) {
+						if (Math.random() * 100 < GamePanel.BONUS_SPAWN) {
+							switch ((int) (Math.random() * 3)) {
 							case 0:
 								blocksArray[x - i][y] = GamePanel.FIRE_BONUS_BLOCK;
 								break;
-							case 1: 
+							case 1:
 								blocksArray[x - i][y] = GamePanel.BOMB_BONUS_BLOCK;
 								break;
 							case 2:
@@ -270,18 +270,24 @@ public class Bomb implements ActionListener {
 						if (!bomberman.dead) {
 							if (bomberman.lifes < 1) {
 								bomberman.dead = true;
+//								bomberman.saveBestAchievements();
 								System.out.println("Dead bomberman");
 							}
 						}
 						if (!secondPlayer.dead) {
 							if (secondPlayer.lifes < 1) {
 								secondPlayer.dead = true;
+//								secondPlayer.saveBestAchievements();
 								System.out.println("Dead secondPlayer");
 							}
 						}
 					}
 				} else
 					left = false;
+				if(bomberman.dead || secondPlayer.dead) {
+					bomberman.saveBestAchievements();
+					secondPlayer.saveBestAchievements();
+				}
 			}
 		}
 		System.out.println("Bomber score: " + bomberman.score);
@@ -290,45 +296,39 @@ public class Bomb implements ActionListener {
 	private void stampAFireOut() {
 		for (int i = 0; i <= length; i++) {
 			if (y - i > 0) {
-				if(blocksArray[x][y - i] == GamePanel.FIRE_BLOCK){
+				if (blocksArray[x][y - i] == GamePanel.FIRE_BLOCK) {
 					blocksArray[x][y - i] = GamePanel.EMPTY_BLOCK;
 				}
 			}
 			if (x + i < MainFrame.DEFAULT_BLOCK_NUMBER) {
-				if(blocksArray[x + i][y] == GamePanel.FIRE_BLOCK){
+				if (blocksArray[x + i][y] == GamePanel.FIRE_BLOCK) {
 					blocksArray[x + i][y] = GamePanel.EMPTY_BLOCK;
 				}
 			}
 			if (y + i < MainFrame.DEFAULT_BLOCK_NUMBER) {
-				if(blocksArray[x][y + i] == GamePanel.FIRE_BLOCK){
+				if (blocksArray[x][y + i] == GamePanel.FIRE_BLOCK) {
 					blocksArray[x][y + i] = GamePanel.EMPTY_BLOCK;
 				}
 			}
 			if (x - i > 0) {
-				if(blocksArray[x - i][y] == GamePanel.FIRE_BLOCK){
+				if (blocksArray[x - i][y] == GamePanel.FIRE_BLOCK) {
 					blocksArray[x - i][y] = GamePanel.EMPTY_BLOCK;
 				}
 			}
 		}
 	}
-	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		if(!circle) {
+		if (!circle) {
 			detonate();
 		}
-		
 		timer.setInitialDelay(500);
 		timer.restart();
-		
-		if(circle){
+		if (circle) {
 			stampAFireOut();
 			timer.stop();
 		}
-		
 		circle = true;
-		
 	}
 }
