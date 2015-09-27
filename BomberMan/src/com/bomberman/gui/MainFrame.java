@@ -40,7 +40,7 @@ public class MainFrame extends JFrame {
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension dem = kit.getScreenSize();
 
-		Image icon = new ImageIcon("res/bomb2.gif").getImage();
+		Image icon = new ImageIcon("res/Bomb.png").getImage();
 		setIconImage(icon);
 		
 		setLocation(dem.width / 5, 0);

@@ -59,8 +59,18 @@ public class Bomb implements ActionListener {
 
 					if (blocksArray[x][y - i] == GamePanel.DESTROYED_BLOCK) {
 						blocksArray[x][y - i] = GamePanel.FIRE_BLOCK;
-						if(Math.random() * 100 < 5){
-							blocksArray[x][y - i] = GamePanel.BONUS_BLOCK;
+						if(Math.random() * 100 < GamePanel.BONUS_SPAWN){
+							switch((int) (Math.random() * 3)) {
+							case 0:
+								blocksArray[x][y - i] = GamePanel.FIRE_BONUS_BLOCK;
+								break;
+							case 1: 
+								blocksArray[x][y - i] = GamePanel.BOMB_BONUS_BLOCK;
+								break;
+							case 2:
+								blocksArray[x][y - i] = GamePanel.LIFE_BONUS_BLOCK;
+								break;
+							}
 						}
 						bomberman.score += BLOCK_BONUS;
 						System.out.println("Bomberman bonus for dest. block: 10");
@@ -108,8 +118,18 @@ public class Bomb implements ActionListener {
 
 					if (blocksArray[x + i][y] == GamePanel.DESTROYED_BLOCK) {
 						blocksArray[x + i][y] = GamePanel.FIRE_BLOCK;
-						if(Math.random() * 100 < 5){
-							blocksArray[x + i][y] = GamePanel.BONUS_BLOCK;
+						if(Math.random() * 100 < GamePanel.BONUS_SPAWN){
+							switch((int) (Math.random() * 3)) {
+							case 0:
+								blocksArray[x + i][y] = GamePanel.FIRE_BONUS_BLOCK;
+								break;
+							case 1: 
+								blocksArray[x + i][y] = GamePanel.BOMB_BONUS_BLOCK;
+								break;
+							case 2:
+								blocksArray[x + i][y] = GamePanel.LIFE_BONUS_BLOCK;
+								break;
+							}
 						}
 						bomberman.score += BLOCK_BONUS;
 						System.out.println("Bomberman bonus for dest. block: 10");
@@ -155,8 +175,18 @@ public class Bomb implements ActionListener {
 
 					if (blocksArray[x][y + i] == GamePanel.DESTROYED_BLOCK) {
 						blocksArray[x][y + i] = GamePanel.FIRE_BLOCK;
-						if(Math.random() * 100 < 5){
-							blocksArray[x][y + i] = GamePanel.BONUS_BLOCK;
+						if(Math.random() * 100 < GamePanel.BONUS_SPAWN){
+							switch((int) (Math.random() * 3)) {
+							case 0:
+								blocksArray[x][y + i] = GamePanel.FIRE_BONUS_BLOCK;
+								break;
+							case 1: 
+								blocksArray[x][y + i] = GamePanel.BOMB_BONUS_BLOCK;
+								break;
+							case 2:
+								blocksArray[x][y + i] = GamePanel.LIFE_BONUS_BLOCK;
+								break;
+							}
 						}
 						bomberman.score += BLOCK_BONUS;
 						System.out.println("Bomberman bonus for dest. block: 10");
@@ -202,8 +232,18 @@ public class Bomb implements ActionListener {
 
 					if (blocksArray[x - i][y] == GamePanel.DESTROYED_BLOCK) {
 						blocksArray[x - i][y] = GamePanel.FIRE_BLOCK;
-						if(Math.random() * 100 < 5){
-							blocksArray[x - i][y] = GamePanel.BONUS_BLOCK;
+						if(Math.random() * 100 < GamePanel.BONUS_SPAWN){
+							switch((int) (Math.random() * 3)) {
+							case 0:
+								blocksArray[x - i][y] = GamePanel.FIRE_BONUS_BLOCK;
+								break;
+							case 1: 
+								blocksArray[x - i][y] = GamePanel.BOMB_BONUS_BLOCK;
+								break;
+							case 2:
+								blocksArray[x - i][y] = GamePanel.LIFE_BONUS_BLOCK;
+								break;
+							}
 						}
 						bomberman.score += BLOCK_BONUS;
 						System.out.println("Bomberman bonus for dest. block: 10");

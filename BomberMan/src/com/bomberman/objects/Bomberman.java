@@ -17,10 +17,10 @@ public class Bomberman {
 	private String bestTime;
 	
 	public int score = 0;
-	public int lifes = 2;
+	public int lifes = 1;
 //	private int speed = 4;
-	private int firePower = 2;
-	public int bombs = 2;
+	private int firePower = 1;
+	public int bombs = 1;
 	public boolean dead;
 	
 
@@ -55,8 +55,16 @@ public class Bomberman {
 		if(y > 1 && x % 2 == 1 && blocksArray[x][y - 1] < GamePanel.DESTROYED_BLOCK){
 			y--;
 			if(blocksArray[x][y] == GamePanel.FIRE_BLOCK) lifes--;
-			if(blocksArray[x][y] == GamePanel.BONUS_BLOCK) {
+			if(blocksArray[x][y] == GamePanel.FIRE_BONUS_BLOCK) {
 				firePower++;
+				blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
+			}
+			if(blocksArray[x][y] == GamePanel.BOMB_BONUS_BLOCK) {
+				bombs++;
+				blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
+			}
+			if(blocksArray[x][y] == GamePanel.LIFE_BONUS_BLOCK) {
+				lifes++;
 				blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
 			}
 		}
@@ -66,8 +74,16 @@ public class Bomberman {
 		if(x < 15 && y % 2 == 1 && blocksArray[x + 1][y] < GamePanel.DESTROYED_BLOCK ){
 			x++;
 			if(blocksArray[x][y] == GamePanel.FIRE_BLOCK) lifes--;
-			if(blocksArray[x][y] == GamePanel.BONUS_BLOCK) {
+			if(blocksArray[x][y] == GamePanel.FIRE_BONUS_BLOCK) {
 				firePower++;
+				blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
+			}
+			if(blocksArray[x][y] == GamePanel.BOMB_BONUS_BLOCK) {
+				bombs++;
+				blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
+			}
+			if(blocksArray[x][y] == GamePanel.LIFE_BONUS_BLOCK) {
+				lifes++;
 				blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
 			}
 		}
@@ -77,8 +93,16 @@ public class Bomberman {
 		if(y < 15 && x % 2 == 1 && blocksArray[x][y + 1] < GamePanel.DESTROYED_BLOCK){
 			y++;
 			if(blocksArray[x][y] == GamePanel.FIRE_BLOCK) lifes--;
-			if(blocksArray[x][y] == GamePanel.BONUS_BLOCK) {
+			if(blocksArray[x][y] == GamePanel.FIRE_BONUS_BLOCK) {
 				firePower++;
+				blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
+			}
+			if(blocksArray[x][y] == GamePanel.BOMB_BONUS_BLOCK) {
+				bombs++;
+				blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
+			}
+			if(blocksArray[x][y] == GamePanel.LIFE_BONUS_BLOCK) {
+				lifes++;
 				blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
 			}
 		}
@@ -88,8 +112,16 @@ public class Bomberman {
 		if(x > 1 && y % 2 == 1 && blocksArray[x - 1][y] < GamePanel.DESTROYED_BLOCK) {
 			x--;
 			if(blocksArray[x][y] == GamePanel.FIRE_BLOCK) lifes--;
-			if(blocksArray[x][y] == GamePanel.BONUS_BLOCK) {
+			if(blocksArray[x][y] == GamePanel.FIRE_BONUS_BLOCK) {
 				firePower++;
+				blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
+			}
+			if(blocksArray[x][y] == GamePanel.BOMB_BONUS_BLOCK) {
+				bombs++;
+				blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
+			}
+			if(blocksArray[x][y] == GamePanel.LIFE_BONUS_BLOCK) {
+				lifes++;
 				blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
 			}
 		}
