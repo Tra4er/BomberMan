@@ -6,6 +6,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.bomberman.objects.Bomberman;
@@ -53,6 +54,8 @@ public class GamePanel extends JPanel{
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		
+		checkIfBombermansDead();
 
 		for (int i = 0; i < MainFrame.DEFAULT_BLOCK_NUMBER; i++) {
 			for (int j = 0; j < MainFrame.DEFAULT_BLOCK_NUMBER; j++) {
@@ -111,6 +114,17 @@ public class GamePanel extends JPanel{
 	private void initPlayers() {
 		playerOne = new Bomberman(1, 1, "Illai", blocksArray);
 		playerTwo = new Bomberman(15, 15, "YR17", blocksArray);
+	}
+	private void checkIfBombermansDead() {
+		if(playerOne.dead) {
+			playerOne.saveBestAchievements();
+			playerTwo.saveBestAchievements();
+			JOptionPane.showMessageDialog(null, "Player Two is WIN", "GAME OVER", JOptionPane.INFORMATION_MESSAGE);
+		} else if(playerTwo.dead) {
+			playerOne.saveBestAchievements();
+			playerTwo.saveBestAchievements();
+			JOptionPane.showMessageDialog(null, "Player One is WIN", "GAME OVER", JOptionPane.INFORMATION_MESSAGE);
+		}
 	}
 
 	private void initBlocksArray() {

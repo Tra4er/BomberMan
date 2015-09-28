@@ -51,7 +51,7 @@ public class MainFrame extends JFrame {
 
 		setLocation(dem.width / 5, 0);
 		setSize(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT);
-		setResizable(true);
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
