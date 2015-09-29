@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 public class MainFrame extends JFrame {
 
@@ -23,7 +24,8 @@ public class MainFrame extends JFrame {
 	private JMenuItem restart;
 	
 	private JMenu players;
-	private JMenuItem changeNames;
+	private JMenuItem changeFirstPlayerName;
+	private JMenuItem changeSecondPlayerName;
 	
 	private MainPanel mainPanel = new MainPanel();
 
@@ -51,7 +53,7 @@ public class MainFrame extends JFrame {
 
 		setLocation(dem.width / 5, 0);
 		setSize(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT);
-		setResizable(false);
+		setResizable(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
@@ -86,8 +88,26 @@ public class MainFrame extends JFrame {
 		menuBar.add(game);
 		
 		players = new JMenu("Players");
-		changeNames = new JMenuItem("Change Names");
-		players.add(changeNames);
+		changeFirstPlayerName = new JMenuItem("Change First Player Name");
+		changeFirstPlayerName.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainPanel.setPlayerOneName(JOptionPane.showInputDialog(null, "First player Name: ", mainPanel.getPlayerOneName(), JOptionPane.PLAIN_MESSAGE));
+				mainPanel.updateScoreboard();
+			}
+		});
+		changeSecondPlayerName = new JMenuItem("Change Second Player Name");
+		changeSecondPlayerName.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainPanel.setPlayerTwoName(JOptionPane.showInputDialog(null, "Second player Name: ", mainPanel.getPlayerTwoName(), JOptionPane.PLAIN_MESSAGE));
+			}
+		});
+		
+		players.add(changeFirstPlayerName);
+		players.add(changeSecondPlayerName);
 		menuBar.add(players);
 		
 		setJMenuBar(menuBar);

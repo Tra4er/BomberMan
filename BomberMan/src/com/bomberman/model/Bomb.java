@@ -1,4 +1,4 @@
-package com.bomberman.objects;
+package com.bomberman.model;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -270,24 +270,18 @@ public class Bomb implements ActionListener {
 						if (!bomberman.dead) {
 							if (bomberman.lifes < 1) {
 								bomberman.dead = true;
-//								bomberman.saveBestAchievements();
 								System.out.println("Dead bomberman");
 							}
 						}
 						if (!secondPlayer.dead) {
 							if (secondPlayer.lifes < 1) {
 								secondPlayer.dead = true;
-//								secondPlayer.saveBestAchievements();
 								System.out.println("Dead secondPlayer");
 							}
 						}
 					}
 				} else
 					left = false;
-				if(bomberman.dead || secondPlayer.dead) {
-					bomberman.saveBestAchievements();
-					secondPlayer.saveBestAchievements();
-				}
 			}
 		}
 		System.out.println("Bomber score: " + bomberman.score);

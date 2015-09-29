@@ -9,7 +9,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import com.bomberman.objects.Bomberman;
+import com.bomberman.model.Bomberman;
+import com.bomberman.util.FileWorker;
 
 public class GamePanel extends JPanel{
 
@@ -112,17 +113,19 @@ public class GamePanel extends JPanel{
 	}
 
 	private void initPlayers() {
-		playerOne = new Bomberman(1, 1, "Illai", blocksArray);
-		playerTwo = new Bomberman(15, 15, "YR17", blocksArray);
+		playerOne = new Bomberman(1, 1, blocksArray);
+		playerTwo = new Bomberman(15, 15, blocksArray);
 	}
 	private void checkIfBombermansDead() {
 		if(playerOne.dead) {
 			playerOne.saveBestAchievements();
 			playerTwo.saveBestAchievements();
+//			FileWorker.write("saves/PlayerOne", playerOne.getName(), playerOne.getBestScore(), ScoreboardPanel.roundTimer.getText());
 			JOptionPane.showMessageDialog(null, "Player Two is WIN", "GAME OVER", JOptionPane.INFORMATION_MESSAGE);
 		} else if(playerTwo.dead) {
 			playerOne.saveBestAchievements();
 			playerTwo.saveBestAchievements();
+//			FileWorker.write("saves/PlayerTwo", playerTwo.getName(), playerTwo.getBestScore(), ScoreboardPanel.roundTimer.getText());
 			JOptionPane.showMessageDialog(null, "Player One is WIN", "GAME OVER", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
@@ -134,7 +137,7 @@ public class GamePanel extends JPanel{
 						|| j == MainFrame.DEFAULT_BLOCK_NUMBER - 1 || (i % 2 == 0 && j % 2 == 0)) {
 					blocksArray[i][j] = STATIC_BLOCK;
 				} else if (Math.random() * 100 > BLOCK_SPAWN && i + j > 3
-						&& i + j < 2 * (MainFrame.DEFAULT_BLOCK_NUMBER - 3)) {
+						&& i + j < (2 * (MainFrame.DEFAULT_BLOCK_NUMBER - 3)) + 1) {
 					blocksArray[i][j] = DESTROYED_BLOCK;
 				}
 

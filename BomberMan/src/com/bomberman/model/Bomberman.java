@@ -1,4 +1,4 @@
-package com.bomberman.objects;
+package com.bomberman.model;
 
 import com.bomberman.gui.GamePanel;
 import com.bomberman.gui.ScoreboardPanel;
@@ -22,7 +22,6 @@ public class Bomberman {
 	private int firePower = 1;
 	public int bombs = 1;
 	public boolean dead;
-	
 
 	// public Bomberman() {
 	// this(1, 1, "Player", blocksArray);
@@ -35,6 +34,10 @@ public class Bomberman {
 	// public Bomberman(String name){
 	// this(1, 1, name, blocksArray);
 	// }
+
+	public Bomberman(int x, int y, int[][] blocksArray) {
+		this(x, y, DEFAULT_PLAYER_NAME, blocksArray);
+	}
 
 	public Bomberman(int[][] blocksArray) {
 		this(1, 1, DEFAULT_PLAYER_NAME, blocksArray);
@@ -130,9 +133,9 @@ public class Bomberman {
 			}
 		}
 	}
-	
+
 	public void saveBestAchievements() {
-		bestScore = score;
+		setBestScore(score);
 		bestTime = ScoreboardPanel.roundTimer.getText();
 		System.out.println("Scores Saved Method");
 	}
@@ -183,6 +186,14 @@ public class Bomberman {
 
 	public void setFirePower(int firePower) {
 		this.firePower = firePower;
+	}
+
+	public int getBestScore() {
+		return bestScore;
+	}
+
+	public void setBestScore(int bestScore) {
+		this.bestScore = bestScore;
 	}
 
 }

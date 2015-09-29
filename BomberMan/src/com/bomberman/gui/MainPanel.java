@@ -35,5 +35,27 @@ public class MainPanel extends JPanel {
 		gamePanel = new GamePanel();
 		add(gamePanel, BorderLayout.CENTER);
 	}
+	
+	public String getPlayerOneName() {
+		return gamePanel.playerOne.getName();
+	}
+	
+	public void setPlayerOneName(String name) {
+		gamePanel.playerOne.setName(name);
+	}
+	
+	public String getPlayerTwoName() {
+		return gamePanel.playerTwo.getName();
+	}
+	
+	public void setPlayerTwoName(String name) {
+		gamePanel.playerTwo.setName(name);
+	}
+	
+	public void updateScoreboard() {
+		scoreboardPanel.repaint();
+	}
+	
+	
 
 }

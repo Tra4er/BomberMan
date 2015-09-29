@@ -35,8 +35,11 @@ public class ScoreboardPanel extends JPanel implements ActionListener {
     private JLabel playerTwoScore;
     private JLabel playerTwoName;
 	
+    private GamePanel gamePanel;
     
 	public ScoreboardPanel(GamePanel gamePanel){
+		
+		this.gamePanel = gamePanel;
 		
 		playerOneName = new JLabel(gamePanel.playerOne.getName());
 		playerOneScore = new JLabel(gamePanel.playerOne.getScore());
@@ -81,7 +84,13 @@ public class ScoreboardPanel extends JPanel implements ActionListener {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		
 		g.drawImage(backgroundImage, 0, 0, MainFrame.DEFAULT_SCREEN_WIDTH, 30, null);
+		
+		playerOneName.setText(gamePanel.playerOne.getName());
+		playerOneScore.setText(gamePanel.playerOne.getScore());
+		playerTwoName.setText(gamePanel.playerTwo.getName());
+		playerTwoScore.setText(gamePanel.playerTwo.getScore());
 	}
 	
 	private void configLabels(){
@@ -105,7 +114,6 @@ public class ScoreboardPanel extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-//		playerOneScore.
 	}
 	
 }
