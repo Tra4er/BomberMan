@@ -12,22 +12,22 @@ import javax.swing.JPanel;
 import com.bomberman.model.Bomberman;
 import com.bomberman.util.FileWorker;
 
-public class GamePanel extends JPanel{
+public class GamePanel extends JPanel {
 
 	private static final long serialVersionUID = -5908210750286572643L;
 
 	public static final int BLOCK_SPAWN = 50;
 	public static final int BONUS_SPAWN = 20;
 
-	public static final int EMPTY_BLOCK = 0;
-	public static final int DESTROYED_BLOCK = 1;
-	public static final int STATIC_BLOCK = 2;
-	public static final int BOMB_BLOCK = 3;
-	public static final int FIRE_BONUS_BLOCK = -1;
-	public static final int FIRE_BLOCK = -2;
-	public static final int BOMB_BONUS_BLOCK = -3;
+	// public static final int DEAD_BOMBERMAN = -5;
 	public static final int LIFE_BONUS_BLOCK = -4;
-//	public static final int DEAD_BOMBERMAN = -5;
+	public static final int BOMB_BONUS_BLOCK = -3;
+	public static final int FIRE_BLOCK =       -2;
+	public static final int FIRE_BONUS_BLOCK = -1;
+	public static final int EMPTY_BLOCK =       0;
+	public static final int DESTROYED_BLOCK =   1;
+	public static final int STATIC_BLOCK =      2;
+	public static final int BOMB_BLOCK =        3;
 
 	private int[][] blocksArray = new int[MainFrame.DEFAULT_BLOCK_NUMBER][MainFrame.DEFAULT_BLOCK_NUMBER];
 
@@ -45,7 +45,7 @@ public class GamePanel extends JPanel{
 	private Image fireImage = new ImageIcon("res/Fire.png").getImage();
 	private Image fireBonusImage = new ImageIcon("res/FireBonus.PNG").getImage();
 	private Image lifeBonusImage = new ImageIcon("res/LifeBonus.png").getImage();
-//	private Image deadBombermanImage = new ImageIcon("res/DeadBomberman.jpg").getImage();
+	// private Image deadBombermanImage = new ImageIcon("res/DeadBomberman.jpg").getImage();
 
 	public GamePanel() {
 		setFocusable(true);
@@ -61,7 +61,7 @@ public class GamePanel extends JPanel{
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
+
 		for (int i = 0; i < MainFrame.DEFAULT_BLOCK_NUMBER; i++) {
 			for (int j = 0; j < MainFrame.DEFAULT_BLOCK_NUMBER; j++) {
 				switch (blocksArray[i][j]) {
@@ -105,10 +105,11 @@ public class GamePanel extends JPanel{
 					g.drawImage(lifeBonusImage, i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK,
 							MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, null);
 					break;
-//				case DEAD_BOMBERMAN:
-//					g.drawImage(deadBombermanImage, i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK,
-//							MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, null);
-//					break;
+				// case DEAD_BOMBERMAN:
+				// g.drawImage(deadBombermanImage, i * MainFrame.DEFAULT_BLOCK,
+				// j * MainFrame.DEFAULT_BLOCK,
+				// MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, null);
+				// break;
 				}
 			}
 		}

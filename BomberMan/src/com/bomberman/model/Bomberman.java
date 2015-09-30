@@ -47,7 +47,7 @@ public class Bomberman {
 	}
 
 	public void moveUp() {
-		if (y > 1 && x % 2 == 1 && blocksArray[x][y - 1] < GamePanel.DESTROYED_BLOCK) {
+		if (blocksArray[x][y - 1] < GamePanel.DESTROYED_BLOCK) {
 			y--;
 			if (blocksArray[x][y] == GamePanel.FIRE_BLOCK)
 				lifes--;
@@ -67,7 +67,7 @@ public class Bomberman {
 	}
 
 	public void moveRight() {
-		if (x < 15 && y % 2 == 1 && blocksArray[x + 1][y] < GamePanel.DESTROYED_BLOCK) {
+		if (blocksArray[x + 1][y] < GamePanel.DESTROYED_BLOCK) {
 			x++;
 			if (blocksArray[x][y] == GamePanel.FIRE_BLOCK)
 				lifes--;
@@ -87,7 +87,7 @@ public class Bomberman {
 	}
 
 	public void moveDown() {
-		if (y < 15 && x % 2 == 1 && blocksArray[x][y + 1] < GamePanel.DESTROYED_BLOCK) {
+		if (blocksArray[x][y + 1] < GamePanel.DESTROYED_BLOCK) {
 			y++;
 			if (blocksArray[x][y] == GamePanel.FIRE_BLOCK)
 				lifes--;
@@ -107,7 +107,7 @@ public class Bomberman {
 	}
 
 	public void moveLeft() {
-		if (x > 1 && y % 2 == 1 && blocksArray[x - 1][y] < GamePanel.DESTROYED_BLOCK) {
+		if (blocksArray[x - 1][y] < GamePanel.DESTROYED_BLOCK) {
 			x--;
 			if (blocksArray[x][y] == GamePanel.FIRE_BLOCK)
 				lifes--;

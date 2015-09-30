@@ -12,7 +12,7 @@ public class Bomb implements ActionListener {
 
 	private final int BLOCK_BONUS = 10;
 	private final int HIT_ENEMY_BONUS = 50;
-	private final int HIT_ME_BONUS = 50;
+	private final int HIT_ME_BONUS = 0;
 
 	private int x;
 	private int y;
