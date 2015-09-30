@@ -27,7 +27,7 @@ public class MainFrame extends JFrame implements Runnable {
 	public static final int DEFAULT_BLOCK = 40;
 	public static final int DEFAULT_BLOCK_NUMBER = 17;
 	public static final int DEFAULT_SCREEN_WIDTH = 686;
-	public static final int DEFAULT_SCREEN_HEIGHT = 761;
+	public static final int DEFAULT_SCREEN_HEIGHT = 766;
 
 	public MainFrame(String title) {
 

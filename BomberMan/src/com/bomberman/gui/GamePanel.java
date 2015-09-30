@@ -16,8 +16,8 @@ public class GamePanel extends JPanel{
 
 	private static final long serialVersionUID = -5908210750286572643L;
 
-	private final int BLOCK_SPAWN = 50;
-	public static final int BONUS_SPAWN = 7;
+	public static final int BLOCK_SPAWN = 50;
+	public static final int BONUS_SPAWN = 20;
 
 	public static final int EMPTY_BLOCK = 0;
 	public static final int DESTROYED_BLOCK = 1;
