@@ -27,6 +27,7 @@ public class GamePanel extends JPanel{
 	public static final int FIRE_BLOCK = -2;
 	public static final int BOMB_BONUS_BLOCK = -3;
 	public static final int LIFE_BONUS_BLOCK = -4;
+//	public static final int DEAD_BOMBERMAN = -5;
 
 	private int[][] blocksArray = new int[MainFrame.DEFAULT_BLOCK_NUMBER][MainFrame.DEFAULT_BLOCK_NUMBER];
 
@@ -44,6 +45,7 @@ public class GamePanel extends JPanel{
 	private Image fireImage = new ImageIcon("res/Fire.png").getImage();
 	private Image fireBonusImage = new ImageIcon("res/FireBonus.PNG").getImage();
 	private Image lifeBonusImage = new ImageIcon("res/LifeBonus.png").getImage();
+//	private Image deadBombermanImage = new ImageIcon("res/DeadBomberman.jpg").getImage();
 
 	public GamePanel() {
 		setFocusable(true);
@@ -103,6 +105,10 @@ public class GamePanel extends JPanel{
 					g.drawImage(lifeBonusImage, i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK,
 							MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, null);
 					break;
+//				case DEAD_BOMBERMAN:
+//					g.drawImage(deadBombermanImage, i * MainFrame.DEFAULT_BLOCK, j * MainFrame.DEFAULT_BLOCK,
+//							MainFrame.DEFAULT_BLOCK, MainFrame.DEFAULT_BLOCK, null);
+//					break;
 				}
 			}
 		}

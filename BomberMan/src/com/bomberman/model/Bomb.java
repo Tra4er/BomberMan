@@ -94,13 +94,11 @@ public class Bomb implements ActionListener {
 						if (!bomberman.dead) {
 							if (bomberman.lifes < 1) {
 								bomberman.dead = true;
-								// bomberman.score -= 100;
 							}
 						}
 						if (!secondPlayer.dead) {
 							if (secondPlayer.lifes < 1) {
 								secondPlayer.dead = true;
-								// bomberman.score += 100;
 							}
 						}
 					}
