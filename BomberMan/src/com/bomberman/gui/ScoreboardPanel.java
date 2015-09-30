@@ -24,9 +24,9 @@ public class ScoreboardPanel extends JPanel implements ActionListener {
 	
 	private Image backgroundImage = new ImageIcon("res/ScoreBG.jpg").getImage();
 	
-	private final Border LABEL_BORDER = BorderFactory.createEmptyBorder(3, 3, 3, 3);
-    private final Border MAIN_BORDER = BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GREEN);
-    private final Font FONT = new Font("Jokerman", Font.PLAIN, 14);
+	private static final Border LABEL_BORDER = BorderFactory.createEmptyBorder(3, 3, 3, 3);
+    private static final Border MAIN_BORDER = BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GREEN);
+    private static final Font FONT = new Font("Jokerman", Font.PLAIN, 14);
     
     private Timer timer = new Timer();
     private JLabel playerOneName;

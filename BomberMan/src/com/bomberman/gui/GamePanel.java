@@ -6,11 +6,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.bomberman.model.Bomberman;
-import com.bomberman.util.FileWorker;
 
 public class GamePanel extends JPanel{
 
@@ -56,8 +54,6 @@ public class GamePanel extends JPanel{
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		checkIfBombermansDead();
-
 		for (int i = 0; i < MainFrame.DEFAULT_BLOCK_NUMBER; i++) {
 			for (int j = 0; j < MainFrame.DEFAULT_BLOCK_NUMBER; j++) {
 				switch (blocksArray[i][j]) {
@@ -115,19 +111,6 @@ public class GamePanel extends JPanel{
 	private void initPlayers() {
 		playerOne = new Bomberman(1, 1, blocksArray);
 		playerTwo = new Bomberman(15, 15, blocksArray);
-	}
-	private void checkIfBombermansDead() {
-		if(playerOne.dead) {
-			playerOne.saveBestAchievements();
-			playerTwo.saveBestAchievements();
-//			FileWorker.write("saves/PlayerOne", playerOne.getName(), playerOne.getBestScore(), ScoreboardPanel.roundTimer.getText());
-			JOptionPane.showMessageDialog(null, "Player Two is WIN", "GAME OVER", JOptionPane.INFORMATION_MESSAGE);
-		} else if(playerTwo.dead) {
-			playerOne.saveBestAchievements();
-			playerTwo.saveBestAchievements();
-//			FileWorker.write("saves/PlayerTwo", playerTwo.getName(), playerTwo.getBestScore(), ScoreboardPanel.roundTimer.getText());
-			JOptionPane.showMessageDialog(null, "Player One is WIN", "GAME OVER", JOptionPane.INFORMATION_MESSAGE);
-		}
 	}
 
 	private void initBlocksArray() {

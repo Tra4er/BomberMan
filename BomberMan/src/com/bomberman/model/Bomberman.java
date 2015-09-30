@@ -23,17 +23,9 @@ public class Bomberman {
 	public int bombs = 1;
 	public boolean dead;
 
-	// public Bomberman() {
-	// this(1, 1, "Player", blocksArray);
-	// }
-	//
-	// public Bomberman(int x, int y) {
-	// this(x, y, "Player", blocksArray);
-	// }
-	//
-	// public Bomberman(String name){
-	// this(1, 1, name, blocksArray);
-	// }
+	public Bomberman(String name, int[][] blocksArray) {
+		this(1, 1, name, blocksArray);
+	}
 
 	public Bomberman(int x, int y, int[][] blocksArray) {
 		this(x, y, DEFAULT_PLAYER_NAME, blocksArray);

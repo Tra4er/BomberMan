@@ -3,6 +3,7 @@ package com.bomberman.gui;
 import java.awt.BorderLayout;
 import java.awt.Graphics;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class MainPanel extends JPanel {
@@ -55,6 +56,19 @@ public class MainPanel extends JPanel {
 	public void updateScoreboard() {
 		scoreboardPanel.repaint();
 	}
+	
+	public void setFocusOnGame() {
+		gamePanel.requestFocus();
+	}
+	
+	public synchronized boolean isPlayerOneDead() {
+		return gamePanel.playerOne.dead;
+	}
+	
+	public synchronized boolean isPlayerTwoDead() {
+		return gamePanel.playerTwo.dead;
+	}
+	
 	
 	
 

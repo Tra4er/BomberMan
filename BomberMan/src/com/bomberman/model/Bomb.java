@@ -73,7 +73,6 @@ public class Bomb implements ActionListener {
 							}
 						}
 						bomberman.score += BLOCK_BONUS;
-						System.out.println("Bomberman bonus for dest. block: 10");
 						up = false;
 					}
 					if (up) {
@@ -84,13 +83,11 @@ public class Bomb implements ActionListener {
 						if (x == bomberman.getX() && y - i == bomberman.getY()) {
 							bomberman.lifes--;
 							bomberman.score -= HIT_ME_BONUS;
-							System.out.println("Took your bonuses for hit yourself: 50");
 							hit = true;
 						}
 						if (x == secondPlayer.getX() && y - i == secondPlayer.getY()) {
 							secondPlayer.lifes--;
 							secondPlayer.score += HIT_ENEMY_BONUS;
-							System.out.println("Bonus for Hit Second Player: 50");
 							hit = true;
 						}
 
@@ -98,14 +95,12 @@ public class Bomb implements ActionListener {
 							if (bomberman.lifes < 1) {
 								bomberman.dead = true;
 								// bomberman.score -= 100;
-								System.out.println("Dead bomberman");
 							}
 						}
 						if (!secondPlayer.dead) {
 							if (secondPlayer.lifes < 1) {
 								secondPlayer.dead = true;
 								// bomberman.score += 100;
-								System.out.println("Dead secondPlayer");
 							}
 						}
 					}
@@ -132,7 +127,6 @@ public class Bomb implements ActionListener {
 							}
 						}
 						bomberman.score += BLOCK_BONUS;
-						System.out.println("Bomberman bonus for dest. block: 10");
 						right = false;
 					}
 					if (right) {
@@ -143,26 +137,22 @@ public class Bomb implements ActionListener {
 						if (x + i == bomberman.getX() && y == bomberman.getY()) {
 							bomberman.lifes--;
 							bomberman.score -= HIT_ME_BONUS;
-							System.out.println("Took your bonuses for hit yourself: 50");
 							hit = true;
 						}
 						if (x + i == secondPlayer.getX() && y == secondPlayer.getY()) {
 							secondPlayer.lifes--;
 							secondPlayer.score += HIT_ENEMY_BONUS;
-							System.out.println("Bonus for Hit Second Player: 50");
 							hit = true;
 						}
 
 						if (!bomberman.dead) {
 							if (bomberman.lifes < 1) {
 								bomberman.dead = true;
-								System.out.println("Dead bomberman");
 							}
 						}
 						if (!secondPlayer.dead) {
 							if (secondPlayer.lifes < 1) {
 								secondPlayer.dead = true;
-								System.out.println("Dead secondPlayer");
 							}
 						}
 					}
@@ -189,7 +179,6 @@ public class Bomb implements ActionListener {
 							}
 						}
 						bomberman.score += BLOCK_BONUS;
-						System.out.println("Bomberman bonus for dest. block: 10");
 						down = false;
 					}
 					if (down) {
@@ -200,26 +189,22 @@ public class Bomb implements ActionListener {
 						if (x == bomberman.getX() && y + i == bomberman.getY()) {
 							bomberman.lifes--;
 							bomberman.score -= HIT_ME_BONUS;
-							System.out.println("Took your bonuses for hit yourself: 50");
 							hit = true;
 						}
 						if (x == secondPlayer.getX() && y + i == secondPlayer.getY()) {
 							secondPlayer.lifes--;
 							secondPlayer.score += HIT_ENEMY_BONUS;
-							System.out.println("Bonus for Hit Second Player: 50");
 							hit = true;
 						}
 
 						if (!bomberman.dead) {
 							if (bomberman.lifes < 1) {
 								bomberman.dead = true;
-								System.out.println("Dead bomberman");
 							}
 						}
 						if (!secondPlayer.dead) {
 							if (secondPlayer.lifes < 1) {
 								secondPlayer.dead = true;
-								System.out.println("Dead secondPlayer");
 							}
 						}
 					}
@@ -246,7 +231,6 @@ public class Bomb implements ActionListener {
 							}
 						}
 						bomberman.score += BLOCK_BONUS;
-						System.out.println("Bomberman bonus for dest. block: 10");
 						left = false;
 					}
 					if (left) {
@@ -257,26 +241,22 @@ public class Bomb implements ActionListener {
 						if (x - i == bomberman.getX() && y == bomberman.getY()) {
 							bomberman.lifes--;
 							bomberman.score -= HIT_ME_BONUS;
-							System.out.println("Took your bonuses for hit yourself: 50");
 							hit = true;
 						}
 						if (x - i == secondPlayer.getX() && y == secondPlayer.getY()) {
 							secondPlayer.lifes--;
 							secondPlayer.score += HIT_ENEMY_BONUS;
-							System.out.println("Bonus for Hit Second Player: 50");
 							hit = true;
 						}
 
 						if (!bomberman.dead) {
 							if (bomberman.lifes < 1) {
 								bomberman.dead = true;
-								System.out.println("Dead bomberman");
 							}
 						}
 						if (!secondPlayer.dead) {
 							if (secondPlayer.lifes < 1) {
 								secondPlayer.dead = true;
-								System.out.println("Dead secondPlayer");
 							}
 						}
 					}
@@ -284,7 +264,6 @@ public class Bomb implements ActionListener {
 					left = false;
 			}
 		}
-		System.out.println("Bomber score: " + bomberman.score);
 	}
 
 	private void stampAFireOut() {
