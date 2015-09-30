@@ -11,7 +11,7 @@ public class Bomberman {
 	private int y;
 
 	public static int[][] blocksArray;
-	
+
 	private String name;
 	private String bestTime;
 	private int bestScore;
@@ -184,7 +184,9 @@ public class Bomberman {
 	}
 
 	public void setBestScore(int bestScore) {
-		this.bestScore = bestScore;
+		if (bestScore > this.bestScore) {
+			this.bestScore = bestScore;
+		}
 	}
 
 	public String getBestTime() {

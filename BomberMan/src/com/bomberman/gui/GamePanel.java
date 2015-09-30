@@ -4,11 +4,13 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.FileNotFoundException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import com.bomberman.model.Bomberman;
+import com.bomberman.util.FileWorker;
 
 public class GamePanel extends JPanel{
 
@@ -46,7 +48,11 @@ public class GamePanel extends JPanel{
 	public GamePanel() {
 		setFocusable(true);
 		addKeyListener(new KeyController());
-		initPlayers();
+		try {
+			initPlayers();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		initBlocksArray();
 	}
 
@@ -108,9 +114,11 @@ public class GamePanel extends JPanel{
 		repaint();
 	}
 
-	private void initPlayers() {
+	private void initPlayers() throws FileNotFoundException {
 		playerOne = new Bomberman(1, 1, blocksArray);
+		FileWorker.read("saves/playerOne", playerOne);
 		playerTwo = new Bomberman(15, 15, blocksArray);
+		FileWorker.read("saves/playerTwo", playerTwo);
 	}
 
 	private void initBlocksArray() {

@@ -8,9 +8,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-
 import com.bomberman.util.FileWorker;
 
 public class MainFrame extends JFrame implements Runnable {
