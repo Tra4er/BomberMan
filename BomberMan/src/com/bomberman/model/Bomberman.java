@@ -11,7 +11,7 @@ public class Bomberman {
 	private int y;
 
 	public static int[][] blocksArray;
-
+	
 	private String name;
 	private String bestTime;
 	private int bestScore;
