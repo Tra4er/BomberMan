@@ -128,8 +128,7 @@ public class Bomberman {
 
 	public void saveBestAchievements() {
 		setBestScore(score);
-		bestTime = ScoreboardPanel.roundTimer.getText();
-		System.out.println("Scores Saved Method");
+		setBestTime(ScoreboardPanel.roundTimer.getText());
 	}
 
 	public String getName() {
@@ -186,6 +185,14 @@ public class Bomberman {
 
 	public void setBestScore(int bestScore) {
 		this.bestScore = bestScore;
+	}
+
+	public String getBestTime() {
+		return bestTime;
+	}
+
+	public void setBestTime(String bestTime) {
+		this.bestTime = bestTime;
 	}
 
 }

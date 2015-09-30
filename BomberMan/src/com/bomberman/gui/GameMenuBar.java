@@ -15,6 +15,7 @@ public class GameMenuBar extends JMenuBar{
 	private static final long serialVersionUID = 4102461562752304677L;
 	
 	private MainPanel mainPanel;
+	private MainFrame mainFrame;
 	
 	private JMenuBar menuBar;
 
@@ -26,11 +27,12 @@ public class GameMenuBar extends JMenuBar{
 	private JMenuItem changeFirstPlayerName;
 	private JMenuItem changeSecondPlayerName;
 	
-	public GameMenuBar(MainPanel mainPanel) {
+	public GameMenuBar(MainFrame mainFrame, MainPanel mainPanel) {
+		this.mainFrame = mainFrame;
 		this.mainPanel = mainPanel;
 	}
 	
-	public void initBarMenu(MainFrame mainFrame) {
+	public void initBarMenu() {
 
 		menuBar = new JMenuBar();
 
@@ -73,8 +75,8 @@ public class GameMenuBar extends JMenuBar{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				mainPanel.setPlayerOneName(JOptionPane.showInputDialog(null, "First player Name: ",
-						mainPanel.getPlayerOneName(), JOptionPane.PLAIN_MESSAGE));
+				mainPanel.getPlayerOne().setName(JOptionPane.showInputDialog(null, "First player Name: ",
+						mainPanel.getPlayerOne().getName(), JOptionPane.PLAIN_MESSAGE));
 				mainPanel.updateScoreboard();
 			}
 		});
@@ -83,8 +85,8 @@ public class GameMenuBar extends JMenuBar{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				mainPanel.setPlayerTwoName(JOptionPane.showInputDialog(null, "Second player Name: ",
-						mainPanel.getPlayerTwoName(), JOptionPane.PLAIN_MESSAGE));
+				mainPanel.getPlayerTwo().setName(JOptionPane.showInputDialog(null, "Second player Name: ",
+						mainPanel.getPlayerTwo().getName(), JOptionPane.PLAIN_MESSAGE));
 			}
 		});
 

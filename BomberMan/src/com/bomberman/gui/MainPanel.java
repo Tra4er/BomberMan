@@ -3,8 +3,9 @@ package com.bomberman.gui;
 import java.awt.BorderLayout;
 import java.awt.Graphics;
 
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import com.bomberman.model.Bomberman;
 
 public class MainPanel extends JPanel {
 
@@ -37,22 +38,14 @@ public class MainPanel extends JPanel {
 		add(gamePanel, BorderLayout.CENTER);
 	}
 	
-	public String getPlayerOneName() {
-		return gamePanel.playerOne.getName();
+	public Bomberman getPlayerOne(){
+		return gamePanel.playerOne;
 	}
 	
-	public void setPlayerOneName(String name) {
-		gamePanel.playerOne.setName(name);
+	public Bomberman getPlayerTwo(){
+		return gamePanel.playerTwo;
 	}
-	
-	public String getPlayerTwoName() {
-		return gamePanel.playerTwo.getName();
-	}
-	
-	public void setPlayerTwoName(String name) {
-		gamePanel.playerTwo.setName(name);
-	}
-	
+
 	public void updateScoreboard() {
 		scoreboardPanel.repaint();
 	}
