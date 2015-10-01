@@ -114,10 +114,10 @@ public class GamePanel extends JPanel {
 			}
 		}
 
-		g.drawImage(playerOneImage, playerOne.getX() * MainFrame.DEFAULT_BLOCK,
-				playerOne.getY() * MainFrame.DEFAULT_BLOCK, 40, 40, null);
-		g.drawImage(playerTwoImage, playerTwo.getX() * MainFrame.DEFAULT_BLOCK,
-				playerTwo.getY() * MainFrame.DEFAULT_BLOCK, 40, 40, null);
+		g.drawImage(playerOneImage, Math.round(playerOne.x * MainFrame.DEFAULT_BLOCK),
+				Math.round(playerOne.y * MainFrame.DEFAULT_BLOCK), 40, 40, null);
+		g.drawImage(playerTwoImage, Math.round(playerTwo.x * MainFrame.DEFAULT_BLOCK),
+				Math.round(playerTwo.y * MainFrame.DEFAULT_BLOCK), 40, 40, null);
 		repaint();
 	}
 
@@ -145,7 +145,7 @@ public class GamePanel extends JPanel {
 
 	private class KeyController extends KeyAdapter {
 		@Override
-		public void keyReleased(KeyEvent e) {
+		public void keyPressed(KeyEvent e) {
 			int keyID = e.getKeyCode();
 
 			switch (keyID) {

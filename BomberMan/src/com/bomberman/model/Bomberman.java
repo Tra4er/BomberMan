@@ -7,8 +7,8 @@ public class Bomberman {
 
 	private static final String DEFAULT_PLAYER_NAME = "Player";
 
-	private int x;
-	private int y;
+	public float x;
+	public float y;
 
 	public static int[][] blocksArray;
 
@@ -18,7 +18,7 @@ public class Bomberman {
 
 	public int score = 0;
 	public int lifes = 1;
-	// private int speed = 4;
+	private float speed = 0.2f;
 	private int firePower = 1;
 	public int bombs = 1;
 	public boolean dead;
@@ -43,85 +43,85 @@ public class Bomberman {
 	}
 
 	public void setBomb(Bomberman secondPlayer) {
-		new Bomb(x, y, blocksArray, this, secondPlayer);
+		new Bomb((int)x, (int)y, blocksArray, this, secondPlayer);
 	}
-
+	
 	public void moveUp() {
-		if (blocksArray[x][y - 1] < GamePanel.DESTROYED_BLOCK) {
-			y--;
-			if (blocksArray[x][y] == GamePanel.FIRE_BLOCK)
+		if (blocksArray[Math.round(x)][(int)Math.ceil(y) - 1] < GamePanel.DESTROYED_BLOCK) {
+			y-=speed;
+			if (blocksArray[getX()][getY()] == GamePanel.FIRE_BLOCK)
 				lifes--;
-			if (blocksArray[x][y] == GamePanel.FIRE_BONUS_BLOCK) {
+			if (blocksArray[getX()][getY()] == GamePanel.FIRE_BONUS_BLOCK) {
 				firePower++;
-				blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
+				blocksArray[getX()][getY()] = GamePanel.EMPTY_BLOCK;
 			}
-			if (blocksArray[x][y] == GamePanel.BOMB_BONUS_BLOCK) {
+			if (blocksArray[getX()][getY()] == GamePanel.BOMB_BONUS_BLOCK) {
 				bombs++;
-				blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
+				blocksArray[getX()][getY()] = GamePanel.EMPTY_BLOCK;
 			}
-			if (blocksArray[x][y] == GamePanel.LIFE_BONUS_BLOCK) {
+			if (blocksArray[getX()][getY()] == GamePanel.LIFE_BONUS_BLOCK) {
 				lifes++;
-				blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
+				blocksArray[getX()][getY()] = GamePanel.EMPTY_BLOCK;
 			}
 		}
 	}
 
 	public void moveRight() {
-		if (blocksArray[x + 1][y] < GamePanel.DESTROYED_BLOCK) {
-			x++;
-			if (blocksArray[x][y] == GamePanel.FIRE_BLOCK)
+		if (blocksArray[(int)Math.floor(x) + 1][getY()] < GamePanel.DESTROYED_BLOCK) {
+			x+=speed;
+			if (blocksArray[getX()][getY()] == GamePanel.FIRE_BLOCK)
 				lifes--;
-			if (blocksArray[x][y] == GamePanel.FIRE_BONUS_BLOCK) {
+			if (blocksArray[getX()][getY()] == GamePanel.FIRE_BONUS_BLOCK) {
 				firePower++;
-				blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
+				blocksArray[getX()][getY()] = GamePanel.EMPTY_BLOCK;
 			}
-			if (blocksArray[x][y] == GamePanel.BOMB_BONUS_BLOCK) {
+			if (blocksArray[getX()][getY()] == GamePanel.BOMB_BONUS_BLOCK) {
 				bombs++;
-				blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
+				blocksArray[getX()][getY()] = GamePanel.EMPTY_BLOCK;
 			}
-			if (blocksArray[x][y] == GamePanel.LIFE_BONUS_BLOCK) {
+			if (blocksArray[getX()][getY()] == GamePanel.LIFE_BONUS_BLOCK) {
 				lifes++;
-				blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
+				blocksArray[getX()][getY()] = GamePanel.EMPTY_BLOCK;
 			}
 		}
 	}
 
 	public void moveDown() {
-		if (blocksArray[x][y + 1] < GamePanel.DESTROYED_BLOCK) {
-			y++;
-			if (blocksArray[x][y] == GamePanel.FIRE_BLOCK)
+		if (blocksArray[getX()][(int)Math.floor(y) + 1] < GamePanel.DESTROYED_BLOCK) {
+			y+=speed;
+			if (blocksArray[getX()][getY()] == GamePanel.FIRE_BLOCK)
 				lifes--;
-			if (blocksArray[x][y] == GamePanel.FIRE_BONUS_BLOCK) {
+			if (blocksArray[getX()][getY()] == GamePanel.FIRE_BONUS_BLOCK) {
 				firePower++;
-				blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
+				blocksArray[getX()][getY()] = GamePanel.EMPTY_BLOCK;
 			}
-			if (blocksArray[x][y] == GamePanel.BOMB_BONUS_BLOCK) {
+			if (blocksArray[getX()][getY()] == GamePanel.BOMB_BONUS_BLOCK) {
 				bombs++;
-				blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
+				blocksArray[getX()][getY()] = GamePanel.EMPTY_BLOCK;
 			}
-			if (blocksArray[x][y] == GamePanel.LIFE_BONUS_BLOCK) {
+			if (blocksArray[getX()][getY()] == GamePanel.LIFE_BONUS_BLOCK) {
 				lifes++;
-				blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
+				blocksArray[getX()][getY()] = GamePanel.EMPTY_BLOCK;
 			}
 		}
 	}
 
 	public void moveLeft() {
-		if (blocksArray[x - 1][y] < GamePanel.DESTROYED_BLOCK) {
-			x--;
-			if (blocksArray[x][y] == GamePanel.FIRE_BLOCK)
+		if (blocksArray[(int)Math.ceil(x) - 1][getY()] < GamePanel.DESTROYED_BLOCK) {
+			x-=speed;
+			if (blocksArray[getX()][getY()] == GamePanel.FIRE_BLOCK)
 				lifes--;
-			if (blocksArray[x][y] == GamePanel.FIRE_BONUS_BLOCK) {
+			if (blocksArray[getX()][getY()] == GamePanel.FIRE_BONUS_BLOCK) {
 				firePower++;
-				blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
+				blocksArray[getX()][getY()] = GamePanel.EMPTY_BLOCK;
 			}
-			if (blocksArray[x][y] == GamePanel.BOMB_BONUS_BLOCK) {
+			if (blocksArray[getX()][getY()] == GamePanel.BOMB_BONUS_BLOCK) {
 				bombs++;
-				blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
+				blocksArray[getX()][getY()] = GamePanel.EMPTY_BLOCK;
 			}
-			if (blocksArray[x][y] == GamePanel.LIFE_BONUS_BLOCK) {
+			if (blocksArray[getX()][getY()] == GamePanel.LIFE_BONUS_BLOCK) {
 				lifes++;
-				blocksArray[x][y] = GamePanel.EMPTY_BLOCK;
+				blocksArray[getX()][getY()] = GamePanel.EMPTY_BLOCK;
 			}
 		}
 	}
@@ -148,7 +148,7 @@ public class Bomberman {
 	}
 
 	public int getX() {
-		return x;
+		return Math.round(x);
 	}
 
 	public void setX(int x) {
@@ -156,7 +156,7 @@ public class Bomberman {
 	}
 
 	public int getY() {
-		return y;
+		return Math.round(y);
 	}
 
 	public void setY(int y) {
